@@ -1,5 +1,6 @@
 #include "SFML/Graphics.hpp"
 #include "player.h"
+#include "Level.h"
 
 int main()
 {
@@ -7,6 +8,8 @@ int main()
 	window->setFramerateLimit(60);
 	
 	Player* player = new Player();
+	
+	Level level("level.tmx");
 
 
 	while (window->isOpen())
@@ -28,6 +31,7 @@ int main()
 		window->clear();
 
 		player->draw(*window);
+		level.draw(*window);
 
 		window->display();
 	}

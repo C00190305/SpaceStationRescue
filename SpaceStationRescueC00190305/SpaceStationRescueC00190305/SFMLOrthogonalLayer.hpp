@@ -129,8 +129,8 @@ private:
             {
                 if(ts->getImagePath().empty())
                 {
-                    Logger::log("This example does not support Collection of Images tilesets", Logger::Type::Info);
-                    Logger::log("Chunks using " + ts->getName() + " will not be created", Logger::Type::Info);
+                    //Logger::log("This example does not support Collection of Images tilesets", Logger::Type::Info);
+                    //Logger::log("Chunks using " + ts->getName() + " will not be created", Logger::Type::Info);
                     continue;
                 }
 

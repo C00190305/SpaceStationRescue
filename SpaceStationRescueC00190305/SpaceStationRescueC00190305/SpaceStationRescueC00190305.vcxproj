@@ -70,11 +70,11 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
-    <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -83,7 +83,7 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;$(SFML_SDK)\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <AdditionalLibraryDirectories>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
@@ -106,7 +106,7 @@
       <IntrinsicFunctions>true</IntrinsicFunctions>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;$(SFML_SDK)\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
@@ -132,6 +132,7 @@
   <ItemGroup>
     <ClCompile Include="alien.cpp" />
     <ClCompile Include="alienNest.cpp" />
+    <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="predator.cpp" />
@@ -140,10 +141,12 @@
   <ItemGroup>
     <ClInclude Include="alien.h" />
     <ClInclude Include="alienNest.h" />
+    <ClInclude Include="Level.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="predator.h" />
     <ClInclude Include="Projectile.h" />
     <ClInclude Include="ProjectileManager.h" />
+    <ClInclude Include="SFMLOrthogonalLayer.hpp" />
     <ClInclude Include="worker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

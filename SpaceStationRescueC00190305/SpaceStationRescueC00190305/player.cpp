@@ -1,6 +1,7 @@
 
 #include "player.h"
 
+
 Player::Player()
 {
 	m_pos = sf::Vector2f(300.0f, 300.0f);
