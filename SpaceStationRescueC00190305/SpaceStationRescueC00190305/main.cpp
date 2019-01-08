@@ -1,23 +1,35 @@
 #include "SFML/Graphics.hpp"
+#include "player.h"
 
 int main()
 {
-	sf::RenderWindow window(sf::VideoMode(1600, 900), "Space Station Rescue");
+	sf::RenderWindow* window = new sf::RenderWindow(sf::VideoMode(1600, 900), "Space Station Rescue");
+	window->setFramerateLimit(60);
+	
+	Player* player = new Player();
 
-	while (window.isOpen())
+
+	while (window->isOpen())
 	{
 		sf::Event event;
-		while (window.pollEvent(event))
+		while (window->pollEvent(event))
 		{
 			if (event.type == sf::Event::Closed)
-				window.close();
+				window->close();
 		}
 
-		window.clear();
+		//update
+
+		player->update(*window);
+		
+		//end update
 
 
+		window->clear();
 
-		window.display();
+		player->draw(*window);
+
+		window->display();
 	}
 
 	return 0;

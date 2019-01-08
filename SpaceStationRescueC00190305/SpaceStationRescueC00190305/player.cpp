@@ -35,7 +35,7 @@ void Player::move()
 	{
 		if (m_speed < MAX_VELOCITY)
 		{
-			m_speed += 0.2f;
+			m_speed += 0.5f;
 		}
 
 		else
@@ -48,7 +48,7 @@ void Player::move()
 	{
 		if (m_speed > -MAX_VELOCITY)
 		{
-			m_speed -= 0.2f;
+			m_speed -= 0.5f;
 		}
 
 		else
@@ -59,13 +59,13 @@ void Player::move()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 	{
-		m_rotationAngle -= 2;
+		m_rotationAngle -= 3;
 		m_sprite.setRotation(m_rotationAngle);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
-		m_rotationAngle += 2;
+		m_rotationAngle += 3;
 		m_sprite.setRotation(m_rotationAngle);
 	}
 
