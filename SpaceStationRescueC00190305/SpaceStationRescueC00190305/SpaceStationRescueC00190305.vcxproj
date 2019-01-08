@@ -131,6 +131,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="alien.cpp" />
+    <ClCompile Include="alienNest.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="predator.cpp" />
@@ -138,8 +139,11 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="alien.h" />
+    <ClInclude Include="alienNest.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="predator.h" />
+    <ClInclude Include="Projectile.h" />
+    <ClInclude Include="ProjectileManager.h" />
     <ClInclude Include="worker.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
