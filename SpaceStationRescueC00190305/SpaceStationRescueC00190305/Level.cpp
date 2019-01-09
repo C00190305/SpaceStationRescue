@@ -14,9 +14,11 @@ Level::Level(std::string path) : m_path(path)
 	}
 
 	layerOne = new MapLayer(*m_map, 0);
+	layerTwo = new MapLayer(*m_map, 1);
 }
 
 void Level::draw(sf::RenderWindow &window)
 {
 	window.draw(*layerOne);
+	window.draw(*layerTwo);
 }

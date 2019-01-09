@@ -38,11 +38,10 @@ int main()
 		//end update
 
 		window->clear();
-
-		player->draw(*window);
-		//level.draw
+		
 		level.draw(*window);
 
+		player->draw(*window);
 		window->display();
 	}
 

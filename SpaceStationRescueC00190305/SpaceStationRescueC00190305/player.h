@@ -18,7 +18,9 @@ public:
 
 private:
 	sf::Sprite m_sprite;
+	sf::Sprite m_shadowSprite;
 	sf::Texture m_texture;
+	sf::Texture m_shadowTexture;
 	sf::Vector2f m_pos;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_direction;

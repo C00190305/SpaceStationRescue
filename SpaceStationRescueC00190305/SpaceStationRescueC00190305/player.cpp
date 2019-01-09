@@ -6,12 +6,20 @@ Player::Player()
 {
 	m_pos = sf::Vector2f(3000.0f, 3000.0f);
 	m_texture.loadFromFile("player.png");
+	m_shadowTexture.loadFromFile("shadowSprite.png");
+	m_texture.setSmooth(true);
+	m_shadowTexture.setSmooth(true);
 	m_sprite.setTexture(m_texture);
+	m_shadowSprite.setTexture(m_shadowTexture);
+	m_shadowSprite.setColor(sf::Color(0, 0, 0, 200));
 	m_sprite.setPosition(m_pos);
+	m_shadowSprite.setPosition(sf::Vector2f(m_pos.x + 10, m_pos.y + 10));
 	m_rotationAngle = 0;
 	m_speed = 0;
 	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
-	m_sprite.setScale(0.05f, 0.05f);
+	m_shadowSprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
+	m_sprite.setScale(0.02f, 0.02f);
+	m_shadowSprite.setScale(0.02f, 0.02f);
 	m_sprite.setRotation(m_rotationAngle);
 	m_velocity = sf::Vector2f(0.0f, 0.0f);
 }
@@ -25,6 +33,7 @@ void Player::update(sf::RenderWindow &window)
 
 void Player::draw(sf::RenderWindow &window)
 {
+	window.draw(m_shadowSprite);
 	window.draw(m_sprite);
 }
 
@@ -62,12 +71,14 @@ void Player::move()
 	{
 		m_rotationAngle -= 3;
 		m_sprite.setRotation(m_rotationAngle);
+		m_shadowSprite.setRotation(m_rotationAngle);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
 		m_rotationAngle += 3;
 		m_sprite.setRotation(m_rotationAngle);
+		m_shadowSprite.setRotation(m_rotationAngle);
 	}
 
 	m_direction.x = (sin(m_rotationAngle * PI / 180)); //in radians
@@ -82,6 +93,7 @@ void Player::move()
 	m_pos.y += m_velocity.y;
 	
 	m_sprite.setPosition(m_pos); //set position
+	m_shadowSprite.setPosition(sf::Vector2f(m_pos.x + 4, m_pos.y + 4));
 	
 }
 
