@@ -4,7 +4,7 @@
 
 Player::Player()
 {
-	m_pos = sf::Vector2f(300.0f, 300.0f);
+	m_pos = sf::Vector2f(3000.0f, 3000.0f);
 	m_texture.loadFromFile("player.png");
 	m_sprite.setTexture(m_texture);
 	m_sprite.setPosition(m_pos);
@@ -19,7 +19,7 @@ Player::Player()
 void Player::update(sf::RenderWindow &window)
 {
 	move();
-	checkBounds(window);
+	//checkBounds(window);
 }
 
 

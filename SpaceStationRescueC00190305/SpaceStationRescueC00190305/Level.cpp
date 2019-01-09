@@ -5,17 +5,18 @@ Level::Level()
 
 }
 
-Level::Level(std::string path)
+Level::Level(std::string path) : m_path(path)
 {
 	m_map = new tmx::Map;
-	m_map->load(path);
-	layerOne = new MapLayer(*m_map, 1);
+	if (m_map->load(m_path))
+	{
+
+	}
+
+	layerOne = new MapLayer(*m_map, 0);
 }
 
 void Level::draw(sf::RenderWindow &window)
 {
-	for (auto &layer : m_map->getLayers())
-	{
-		window.draw(layer);
-	}
+	window.draw(*layerOne);
 }

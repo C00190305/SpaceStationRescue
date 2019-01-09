@@ -16,6 +16,7 @@ public:
 	Level(std::string path);
 	void draw(sf::RenderWindow &window);
 private:
+	std::string m_path;
 	tmx::Map* m_map;
 	MapLayer* layerOne;
 	MapLayer* layerTwo;
