@@ -4,7 +4,7 @@
 
 Player::Player()
 {
-	m_pos = sf::Vector2f(3000.0f, 3000.0f);
+	m_pos = sf::Vector2f(80 * 32, 67 * 32);
 	m_texture.loadFromFile("player.png");
 	m_shadowTexture.loadFromFile("shadowSprite.png");
 	m_texture.setSmooth(true);

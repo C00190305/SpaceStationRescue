@@ -22,11 +22,24 @@ Level::Level(std::string path) : m_path(path)
 	layerTwo = new MapLayer(*m_map, 1);
 }
 
+void Level::update(Player* p)
+{
+	resolveCollisions(p);
+}
+
 void Level::draw(sf::RenderWindow &window)
 {
 	window.draw(m_backgroundSprite);
 	window.draw(*layerOne);
 	window.draw(*layerTwo);
+}
+
+void Level::resolveCollisions(Player* p)
+{
+	if (layerOne->getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
+	{
+		std::cout << "wall collision" << std::endl;
+	}
 }
 
 tmx::Map* Level::getMap()

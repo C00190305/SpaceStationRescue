@@ -3,6 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "player.h"
 #include "Level.h"
+#include "EnemyManager.h"
 
 #include <iostream>
 #include <vector>
@@ -20,6 +21,8 @@ int main()
 
 	Level level("level.tmx");
 
+	EnemyManager enemyManager(level.getMap());
+
 	while (window->isOpen())
 	{
 		sf::Event event;
@@ -33,6 +36,7 @@ int main()
 
 		player->update(*window);
 		camera.setCenter(player->getPosition());
+		level.update(player);
 		window->setView(camera);
 		
 		//end update
@@ -40,7 +44,7 @@ int main()
 		window->clear();
 		
 		level.draw(*window);
-
+		enemyManager.drawEntities(*window);
 		player->draw(*window);
 		window->display();
 	}

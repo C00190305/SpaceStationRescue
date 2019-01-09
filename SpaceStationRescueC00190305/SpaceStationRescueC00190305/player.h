@@ -25,6 +25,7 @@ private:
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_direction;
 	sf::Mouse m_mouse;
+	std::string m_collisionTag = "player";
 	float m_speed;
 	int m_rotationAngle;
 	int nextAngle;

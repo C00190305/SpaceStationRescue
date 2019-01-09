@@ -1,6 +1,7 @@
 #pragma once
 #include "SFML/Graphics.hpp"
 #include "Predator.h"
+#include "player.h"
 
 #include <vector>
 
@@ -15,14 +16,18 @@ public:
 
 	void update();
 	void draw(sf::RenderWindow &window);
+	bool isAlive();
 private:
 	sf::Vector2f m_pos;
 	sf::Sprite m_sprite;
 	sf::Texture m_texture;
 	std::vector<Predator*> m_predators;
+	bool m_alive;
+
+	void resolveCollisions(Player *p);
 
 	const int MAX_PREDATORS = 4; //maximum number of predators that can be spawned 
-	int health = 4; //number of hits the nest can take before being destroyed
+	int m_health = 4; //number of hits the nest can take before being destroyed
 };
 
 

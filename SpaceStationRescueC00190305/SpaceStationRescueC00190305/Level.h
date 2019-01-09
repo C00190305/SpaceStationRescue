@@ -6,14 +6,16 @@
 #include "tmxlite/Config.hpp"
 #include "tmxlite/Map.hpp"
 #include "SFMLOrthogonalLayer.hpp"
+#include "player.h"
 #include <vector>
-
+#include <iostream>
 
 class Level
 {
 public:
 	Level();
 	Level(std::string path);
+	void update(Player* p);
 	void draw(sf::RenderWindow &window);
 	tmx::Map* getMap();
 private:
@@ -24,6 +26,8 @@ private:
 	MapLayer* layerOne;
 	MapLayer* layerTwo;
 	MapLayer* layerThree;
+	
+	void resolveCollisions(Player* p);
 };
 
 
