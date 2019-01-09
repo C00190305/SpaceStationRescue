@@ -15,7 +15,10 @@ public:
 	Level();
 	Level(std::string path);
 	void draw(sf::RenderWindow &window);
+	tmx::Map* getMap();
 private:
+	sf::Sprite m_backgroundSprite;
+	sf::Texture m_backgroundTexture;
 	std::string m_path;
 	tmx::Map* m_map;
 	MapLayer* layerOne;

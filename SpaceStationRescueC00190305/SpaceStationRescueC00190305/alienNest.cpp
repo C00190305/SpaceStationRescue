@@ -9,6 +9,7 @@ AlienNest::AlienNest(sf::Vector2f position) : m_pos(position)
 {
 	m_texture.loadFromFile("nest.png");
 	m_sprite.setTexture(m_texture);
+	m_sprite.setPosition(m_pos);
 }
 
 void AlienNest::update()

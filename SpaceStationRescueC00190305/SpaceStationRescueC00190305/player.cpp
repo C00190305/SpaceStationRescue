@@ -69,14 +69,14 @@ void Player::move()
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Left))
 	{
-		m_rotationAngle -= 3;
+		m_rotationAngle -= 4;
 		m_sprite.setRotation(m_rotationAngle);
 		m_shadowSprite.setRotation(m_rotationAngle);
 	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Right))
 	{
-		m_rotationAngle += 3;
+		m_rotationAngle += 4;
 		m_sprite.setRotation(m_rotationAngle);
 		m_shadowSprite.setRotation(m_rotationAngle);
 	}
