@@ -29,7 +29,7 @@ private:
 	int m_rotationAngle;
 	int nextAngle;
 	//const sf::Vector2f MAX_VELOCITY = sf::Vector2f(5.0f, 5.0f);
-	const float MAX_VELOCITY = 10.0f;
+	const float MAX_VELOCITY = 8.0f;
 
 	void move();
 	float getNewOrientation(float currentOrientation, sf::Vector2f currentVelocity);
