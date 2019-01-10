@@ -26,6 +26,7 @@ private:
 	MapLayer* layerOne;
 	MapLayer* layerTwo;
 	MapLayer* layerThree;
+	std::vector<tmx::Object> m_objects;
 	
 	void resolveCollisions(Player* p);
 };

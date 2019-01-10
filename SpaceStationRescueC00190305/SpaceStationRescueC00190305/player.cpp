@@ -89,9 +89,12 @@ void Player::move()
 	m_velocity.x = m_direction.x * m_speed; //find velocity
 	m_velocity.y = m_direction.y * m_speed;
 
+	
 	m_pos.x += m_velocity.x; //increment the position by the velocity
 	m_pos.y += m_velocity.y;
-	
+
+
+
 	m_sprite.setPosition(m_pos); //set position
 	m_shadowSprite.setPosition(sf::Vector2f(m_pos.x + 4, m_pos.y + 4));
 	
@@ -156,4 +159,14 @@ sf::Vector2f Player::getVelocity()
 const sf::Sprite& Player::getSprite()
 {
 	return m_sprite;
+}
+
+void Player::collisionDetected(bool collided)
+{
+	m_collided = collided;
+}
+
+void Player::setVelocity(const sf::Vector2f& v)
+{
+	m_velocity = v;
 }

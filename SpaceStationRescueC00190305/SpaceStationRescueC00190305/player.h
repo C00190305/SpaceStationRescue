@@ -14,6 +14,8 @@ public:
 	void draw(sf::RenderWindow &window);
 	sf::Vector2f getPosition();
 	sf::Vector2f getVelocity();
+	void setVelocity(const sf::Vector2f& v);
+	void collisionDetected(bool collided);
 	const sf::Sprite& getSprite();
 
 private:
@@ -22,10 +24,12 @@ private:
 	sf::Texture m_texture;
 	sf::Texture m_shadowTexture;
 	sf::Vector2f m_pos;
+	sf::Vector2f m_oldPos;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_direction;
 	sf::Mouse m_mouse;
 	std::string m_collisionTag = "player";
+	bool m_collided = false;
 	float m_speed;
 	int m_rotationAngle;
 	int nextAngle;
