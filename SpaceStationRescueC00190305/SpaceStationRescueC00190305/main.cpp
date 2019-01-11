@@ -30,6 +30,10 @@ int main()
 		{
 			if (event.type == sf::Event::Closed)
 				window->close();
+			if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Escape))
+			{
+				window->close();
+			}
 		}
 
 		//update

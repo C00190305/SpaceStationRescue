@@ -30,7 +30,6 @@ Level::Level(std::string path) : m_path(path)
 
 		if (layer->getType() == tmx::Layer::Type::Object)
 		{
-			//const auto& objects = layer->getLayerAs<tmx::ObjectGroup>().getObjects();
 			m_objects = layer->getLayerAs<tmx::ObjectGroup>().getObjects();
 			std::cout << "Found " << m_objects.size() << " objects in layer" << std::endl;
 
@@ -74,8 +73,8 @@ void Level::resolveCollisions(Player* p)
 
 		if (p->getSprite().getGlobalBounds().intersects(*collisionRect))
 		{
-			std::cout << "Collision detected BOI" << std::endl;
-			p->setVelocity(sf::Vector2f(p->getVelocity().x * -1, p->getVelocity().y * -1));
+			//std::cout << "Collision detected player" << std::endl;
+			p->collisionDetected();
 		}
 
 	}

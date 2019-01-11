@@ -1,7 +1,7 @@
 
 #include "player.h"
 
-
+//Default constructor
 Player::Player()
 {
 	m_pos = sf::Vector2f(80 * 32, 67 * 32);
@@ -22,21 +22,29 @@ Player::Player()
 	m_shadowSprite.setScale(0.02f, 0.02f);
 	m_sprite.setRotation(m_rotationAngle);
 	m_velocity = sf::Vector2f(0.0f, 0.0f);
+
+	m_projectileManager = new ProjectileManager(m_pos);
 }
 
+//Update function to be called in the main update loop
 void Player::update(sf::RenderWindow &window)
 {
 	move();
+	m_projectileManager->update();
+	fireProjectile();
 	//checkBounds(window);
 }
 
-
+//Render function
+//@param: sf::Renderwindow
 void Player::draw(sf::RenderWindow &window)
 {
 	window.draw(m_shadowSprite);
+	m_projectileManager->draw(window);
 	window.draw(m_sprite);
 }
 
+//Function responsible for using the keys to manipulate the player object
 void Player::move()
 {
 	const float PI = 3.14159;
@@ -89,10 +97,11 @@ void Player::move()
 	m_velocity.x = m_direction.x * m_speed; //find velocity
 	m_velocity.y = m_direction.y * m_speed;
 
+	m_oldPos = m_pos; //store current position before moving to the new position
+
 	
 	m_pos.x += m_velocity.x; //increment the position by the velocity
 	m_pos.y += m_velocity.y;
-
 
 
 	m_sprite.setPosition(m_pos); //set position
@@ -100,72 +109,50 @@ void Player::move()
 	
 }
 
-void Player::checkBounds(sf::RenderWindow &window)
+void Player::fireProjectile()
 {
-	if (m_sprite.getPosition().y  > window.getSize().y)
-	{
-		m_pos.y = 0;
-	}
-
-	else if (m_sprite.getPosition().y < 0)
-	{
-		m_pos.y = window.getSize().y;
-	}
-
-	else if (m_sprite.getPosition().x > window.getSize().x)
-	{
-		m_pos.x = 0;
-	}
-
-	else if (m_sprite.getPosition().x < 0)
-	{
-		m_pos.x = window.getSize().x;
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
+	{ 
+		m_projectileManager->createProjectile(m_direction, m_pos, m_rotationAngle);
 	}
 }
 
+//Vector normalization function
 int Player::normalize(sf::Vector2f v)
 {
 	return (sqrt((v.x * v.x) + (v.y * v.y)));
 	
 }
 
-float Player::getNewOrientation(float currentOrientation, sf::Vector2f velocity)
-{
-	const float PI = 3.14159;
-	float radians;
-	
-	if (normalize(velocity) > 0)
-	{
-		radians = atan2f(m_pos.x, m_pos.y);
-		return radians * (180.0 / PI);
-	}
-
-	else
-	{
-		return currentOrientation;
-	}
-}
-
+//Returns position as sf::vector2f
 sf::Vector2f Player::getPosition()
 {
 	return m_pos;
 }
 
+//Returns velocity as sf::vector2f
 sf::Vector2f Player::getVelocity()
 {
 	return m_velocity;
 }
 
+//Returns reference to sprite
 const sf::Sprite& Player::getSprite()
 {
 	return m_sprite;
 }
 
-void Player::collisionDetected(bool collided)
+//Method to be called when a collision is detected with another game object
+//Resets position and sets speed to be 0.
+void Player::collisionDetected()
 {
-	m_collided = collided;
+	m_pos.x = m_oldPos.x;
+	m_pos.y = m_oldPos.y;
+		
+	m_speed = 0;
 }
 
+//Velocity setter
 void Player::setVelocity(const sf::Vector2f& v)
 {
 	m_velocity = v;

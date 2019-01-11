@@ -70,16 +70,16 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
     <LibraryPath>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SFML_SDK)\include\;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SFML_SDK)\lib\;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SFML_SDK)\include\;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SFML_SDK)\lib\;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <IncludePath>$(SFML_SDK)\include\;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
@@ -91,10 +91,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;$(SFML_SDK)\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;$(SFML_SDK)\include\;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>thor-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;libtmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -104,10 +104,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)\include\;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_SDK)\include\;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SFML_SDK)\lib\;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_SDK)\lib\;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <AdditionalDependencies>sfml-system-d.lib;sfml-window-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -153,6 +153,8 @@
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
     <ClCompile Include="predator.cpp" />
+    <ClCompile Include="Projectile.cpp" />
+    <ClCompile Include="ProjectileManager.cpp" />
     <ClCompile Include="worker.cpp" />
   </ItemGroup>
   <ItemGroup>

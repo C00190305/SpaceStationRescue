@@ -5,6 +5,7 @@
 #include "SFML/Graphics.hpp"
 #include <iostream>
 
+#include "ProjectileManager.h"
 
 class Player
 {
@@ -15,7 +16,7 @@ public:
 	sf::Vector2f getPosition();
 	sf::Vector2f getVelocity();
 	void setVelocity(const sf::Vector2f& v);
-	void collisionDetected(bool collided);
+	void collisionDetected();
 	const sf::Sprite& getSprite();
 
 private:
@@ -29,6 +30,7 @@ private:
 	sf::Vector2f m_direction;
 	sf::Mouse m_mouse;
 	std::string m_collisionTag = "player";
+	ProjectileManager* m_projectileManager;
 	bool m_collided = false;
 	float m_speed;
 	int m_rotationAngle;
@@ -39,6 +41,7 @@ private:
 	void move();
 	float getNewOrientation(float currentOrientation, sf::Vector2f currentVelocity);
 	void checkBounds(sf::RenderWindow &window);
+	void fireProjectile();
 	int normalize(sf::Vector2f v);
 
 };
