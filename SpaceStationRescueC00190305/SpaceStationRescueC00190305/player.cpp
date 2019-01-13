@@ -113,7 +113,13 @@ void Player::fireProjectile()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))
 	{ 
-		m_projectileManager->createProjectile(m_direction, m_pos, m_rotationAngle);
+		m_shootTimer = m_shootClock.getElapsedTime();
+		if (m_shootTimer.asMilliseconds() > m_shootDelay)
+		{
+			//m_projectileVector.push_back(new Projectile(m_direction, m_pos, m_angle));
+			m_projectileManager->create(m_direction, m_pos, m_rotationAngle);
+			m_shootTimer = m_shootClock.restart();
+		}
 	}
 }
 

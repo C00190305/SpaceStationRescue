@@ -8,7 +8,10 @@ ProjectileManager::ProjectileManager()
 //@params: pos sf::vector2f
 ProjectileManager::ProjectileManager(sf::Vector2f pos) : m_pos(pos)
 {
-	
+	for (int i = 0; i < MAX_PROJECTILES; i++)
+	{
+		m_projectiles.push_back(new Projectile());
+	}
 }
 
 void ProjectileManager::update()
@@ -17,10 +20,6 @@ void ProjectileManager::update()
 	for (int i = 0; i < size; i++)
 	{
 		m_projectiles.at(i)->update();
-		if (m_projectiles.at(i)->alive() == false)
-		{
-			
-		}
 	}
 }
 
@@ -37,7 +36,15 @@ void ProjectileManager::draw(sf::RenderWindow &window)
 //direction: sf::Vector2f initial direction vector
 //pos: sf::Vector2f initial position of the projectile
 //angle: int angle to rotate the sprite to
-void ProjectileManager::createProjectile(sf::Vector2f direction, sf::Vector2f pos, const int angle)
+void ProjectileManager::create(sf::Vector2f direction, sf::Vector2f pos, const int angle)
 {
-	m_projectiles.push_back(new Projectile(direction, pos, angle));
+	for (int i = 0; i < MAX_PROJECTILES; i++)
+	{
+		if (m_projectiles.at(i)->alive() == false)
+		{
+			m_projectiles.at(i)->init(direction, pos, angle);
+			std::cout << "Firing proj number: " << i << std::endl;
+			break;
+		}
+	}
 }

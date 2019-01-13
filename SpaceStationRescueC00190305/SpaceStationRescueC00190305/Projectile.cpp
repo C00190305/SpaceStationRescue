@@ -7,6 +7,14 @@
 /////////////////////////////////////////////////////////////
 Projectile::Projectile()
 {
+	m_texture.loadFromFile("playerProjectile.png");
+	m_sprite.setTexture(m_texture);
+
+	m_sprite.setScale(1.0f, 1.0f);
+	velocity = 12.0f;
+	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
+	m_sprite.setPosition(sf::Vector2f(m_pos.x - 5, m_pos.y));
+	m_alive = false;
 
 }
 
@@ -23,7 +31,7 @@ Projectile::Projectile(sf::Vector2f direction, sf::Vector2f pos, const int angle
 	m_sprite.setTexture(m_texture);
 	
 	m_sprite.setScale(1.0f, 1.0f);
-	velocity = 0.8f;
+	velocity = 12.0f;
 	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
 	m_sprite.setPosition(sf::Vector2f(m_pos.x - 5, m_pos.y));
 	m_sprite.setRotation(angle);
@@ -60,14 +68,15 @@ void Projectile::update()
 /////////////////////////////////////////////////////////////
 void Projectile::init(sf::Vector2f direction, sf::Vector2f pos, const int angle)
 {
-	m_inUse = true;
 
 	m_direction = direction;
 	normalize(m_direction);
 
 	m_pos = pos;
 	m_angle = angle;
-	m_sprite.setRotation(m_angle + 90);
+	m_sprite.setRotation(m_angle);
+
+	m_alive = true;
 }
 
 /////////////////////////////////////////////////////////////

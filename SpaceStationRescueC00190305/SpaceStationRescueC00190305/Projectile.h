@@ -31,7 +31,7 @@ private:
 	bool m_inUse;
 	bool m_alive;
 	
-	int m_ttl = 100;
+	int m_ttl = 310;
 	void normalize(sf::Vector2f &v);
 };
 #endif // !PROJECTILE_H

@@ -38,6 +38,10 @@ private:
 	//const sf::Vector2f MAX_VELOCITY = sf::Vector2f(5.0f, 5.0f);
 	const float MAX_VELOCITY = 8.0f;
 
+	sf::Clock m_shootClock;
+    sf::Time m_shootTimer;
+	int m_shootDelay = 300;
+
 	void move();
 	float getNewOrientation(float currentOrientation, sf::Vector2f currentVelocity);
 	void checkBounds(sf::RenderWindow &window);
