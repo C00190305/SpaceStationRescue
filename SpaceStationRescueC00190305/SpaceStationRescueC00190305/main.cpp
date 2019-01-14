@@ -4,6 +4,7 @@
 #include "player.h"
 #include "Level.h"
 #include "EnemyManager.h"
+#include "worker.h"
 
 #include <iostream>
 #include <vector>
@@ -18,6 +19,8 @@ int main()
 
 	
 	Player* player = new Player();
+	Worker worker;
+
 
 	Level level("level.tmx");
 
@@ -39,6 +42,7 @@ int main()
 		//update
 
 		player->update(*window);
+		worker.update();
 		camera.setCenter(player->getPosition());
 		level.update(player);
 		window->setView(camera);
@@ -49,6 +53,7 @@ int main()
 		
 		level.draw(*window);
 		enemyManager.drawEntities(*window);
+		worker.draw(*window);
 		player->draw(*window);
 		window->display();
 	}

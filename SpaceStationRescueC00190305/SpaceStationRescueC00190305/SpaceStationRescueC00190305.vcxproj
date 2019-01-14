@@ -148,7 +148,10 @@
   <ItemGroup>
     <ClCompile Include="alien.cpp" />
     <ClCompile Include="alienNest.cpp" />
+    <ClCompile Include="AnimatedSprite.cpp" />
+    <ClCompile Include="Animation.cpp" />
     <ClCompile Include="EnemyManager.cpp" />
+    <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Level.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="player.cpp" />
@@ -160,7 +163,10 @@
   <ItemGroup>
     <ClInclude Include="alien.h" />
     <ClInclude Include="alienNest.h" />
+    <ClInclude Include="AnimatedSprite.hpp" />
+    <ClInclude Include="Animation.hpp" />
     <ClInclude Include="EnemyManager.h" />
+    <ClInclude Include="HUD.h" />
     <ClInclude Include="Level.h" />
     <ClInclude Include="player.h" />
     <ClInclude Include="predator.h" />

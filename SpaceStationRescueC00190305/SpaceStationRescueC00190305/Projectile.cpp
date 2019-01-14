@@ -63,12 +63,14 @@ void Projectile::update()
 
 /////////////////////////////////////////////////////////////
 //
-//
-//
+// Called when a projectile should be fired
+//@param direction: initial direction
+//@param pos: initial position
+//@param angle: initial angle for the sprite
 /////////////////////////////////////////////////////////////
 void Projectile::init(sf::Vector2f direction, sf::Vector2f pos, const int angle)
 {
-	m_alive = true;
+	m_alive = true; //set alive flag to begin drawing and updating
 	m_pos = pos;
 	m_ttl = 310; //Reset ttl so it doesn't instantly deactivate itself
 	m_angle = angle;
