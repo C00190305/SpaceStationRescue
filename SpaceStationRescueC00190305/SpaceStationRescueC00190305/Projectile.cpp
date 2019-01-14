@@ -68,15 +68,13 @@ void Projectile::update()
 /////////////////////////////////////////////////////////////
 void Projectile::init(sf::Vector2f direction, sf::Vector2f pos, const int angle)
 {
-
-	m_direction = direction;
-	normalize(m_direction);
-
+	m_alive = true;
 	m_pos = pos;
+	m_ttl = 310; //Reset ttl so it doesn't instantly deactivate itself
 	m_angle = angle;
 	m_sprite.setRotation(m_angle);
-
-	m_alive = true;
+	m_direction = direction;
+	normalize(m_direction);
 }
 
 /////////////////////////////////////////////////////////////
