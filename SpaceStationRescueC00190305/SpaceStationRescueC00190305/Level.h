@@ -18,6 +18,7 @@ public:
 	void update(Player* p);
 	void draw(sf::RenderWindow &window);
 	tmx::Map* getMap();
+	std::vector<MapLayer*> getDrawableLayers();
 private:
 	sf::Sprite m_backgroundSprite;
 	sf::Texture m_backgroundTexture;
@@ -27,6 +28,7 @@ private:
 	MapLayer* layerTwo;
 	MapLayer* layerThree;
 	std::vector<tmx::Object> m_objects;
+	std::vector<MapLayer*> m_drawableLayers;
 	
 	void resolveCollisions(Player* p);
 };

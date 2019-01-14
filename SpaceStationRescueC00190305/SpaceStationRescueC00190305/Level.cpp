@@ -20,6 +20,9 @@ Level::Level(std::string path) : m_path(path)
 
 	layerOne = new MapLayer(*m_map, 0);
 	layerTwo = new MapLayer(*m_map, 1);
+
+	m_drawableLayers.push_back(layerOne);
+	m_drawableLayers.push_back(layerTwo);
 	
 	const auto& layers = m_map->getLayers();
 	std::cout << "Map has " << layers.size() << " layers" << std::endl;
@@ -83,4 +86,9 @@ void Level::resolveCollisions(Player* p)
 tmx::Map* Level::getMap()
 {
 	return m_map;
+}
+
+std::vector<MapLayer*> Level::getDrawableLayers()
+{
+	return m_drawableLayers;
 }

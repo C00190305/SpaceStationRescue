@@ -5,6 +5,7 @@
 #include "Level.h"
 #include "EnemyManager.h"
 #include "worker.h"
+#include "HUD.h"
 
 #include <iostream>
 #include <vector>
@@ -17,12 +18,15 @@ int main()
 	camera.setSize(800, 450);
 	window->setView(camera);
 
-	
+
+	Level level("level.tmx");
+
 	Player* player = new Player();
+	HUD* hud = new HUD(level);
 	Worker worker;
 
 
-	Level level("level.tmx");
+
 
 	EnemyManager enemyManager(level.getMap());
 
@@ -42,10 +46,12 @@ int main()
 		//update
 
 		player->update(*window);
+		hud->update(player->getPosition());
 		worker.update();
 		camera.setCenter(player->getPosition());
 		level.update(player);
 		window->setView(camera);
+		
 		
 		//end update
 
@@ -55,6 +61,7 @@ int main()
 		enemyManager.drawEntities(*window);
 		worker.draw(*window);
 		player->draw(*window);
+		hud->draw(*window);
 		window->display();
 	}
 

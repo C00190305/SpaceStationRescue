@@ -9,6 +9,7 @@ Player::Player()
 	m_shadowTexture.loadFromFile("shadowSprite.png");
 	m_texture.setSmooth(true);
 	m_shadowTexture.setSmooth(true);
+	m_texture.generateMipmap();
 	m_sprite.setTexture(m_texture);
 	m_shadowSprite.setTexture(m_shadowTexture);
 	m_shadowSprite.setColor(sf::Color(0, 0, 0, 200));
