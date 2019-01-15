@@ -202,7 +202,7 @@
   </object>
  </objectgroup>
  <objectgroup id="6" name="WallsObj">
-  <object id="9" x="0" y="0" width="1536" height="128"/>
+  <object id="9" x="902" y="62" width="634" height="66"/>
   <object id="11" x="1536" y="0" width="1344" height="96"/>
   <object id="12" x="2720" y="96" width="160" height="800"/>
   <object id="13" x="2432" y="640" width="288" height="256"/>

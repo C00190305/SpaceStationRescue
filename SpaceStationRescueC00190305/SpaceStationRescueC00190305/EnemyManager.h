@@ -8,6 +8,7 @@
 
 #include "SFML/Graphics.hpp"
 #include "AlienNest.h"
+#include "worker.h"
 
 #include <vector>
 
@@ -21,6 +22,7 @@ public:
 	void drawEntities(sf::RenderWindow &window);
 private:
 	std::vector<AlienNest*> m_alienNestVector;
+	std::vector<Worker*> m_workerVector;
 	tmx::Map* m_mapRef;
 	const int MAX_NESTS = 3;
 	const int TILE_WIDTH = 32;

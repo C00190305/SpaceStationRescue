@@ -17,6 +17,7 @@ public:
 	void update();
 	void create(sf::Vector2f direction, sf::Vector2f pos, const int angle);
 	void draw(sf::RenderWindow& window);
+	std::vector<Projectile*> getProjectilePool();
 private:
 	sf::Vector2f m_pos;
 	std::vector<Projectile*> m_projectiles;

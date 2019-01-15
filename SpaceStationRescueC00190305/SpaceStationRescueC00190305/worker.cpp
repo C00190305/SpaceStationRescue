@@ -2,7 +2,14 @@
 
 Worker::Worker()
 {
-	m_pos = sf::Vector2f(1300.0f, 1000.0f);
+
+}
+
+//Overloaded constructor
+//@params position: sf::vector2f of the initial position
+Worker::Worker(sf::Vector2f	position) : m_pos(position)
+{
+	
 
 	//Set up animation
 	m_texture.loadFromFile("workerBot.png");

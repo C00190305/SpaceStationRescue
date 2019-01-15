@@ -51,9 +51,9 @@ Level::Level(std::string path) : m_path(path)
 	}
 }
 
-void Level::update(Player* p)
+void Level::update(Player* p, ProjectileManager projectileManager)
 {
-	resolveCollisions(p);
+	resolveCollisions(p, projectileManager);
 }
 
 void Level::draw(sf::RenderWindow &window)
@@ -63,10 +63,11 @@ void Level::draw(sf::RenderWindow &window)
 	window.draw(*layerTwo);
 }
 
-void Level::resolveCollisions(Player* p)
+void Level::resolveCollisions(Player* p, ProjectileManager projectileManager)
 {
 	for (const auto& collisionObject : m_objects)
 	{
+		//Smart pointer to free the resource after the check completes
 		std::shared_ptr<sf::FloatRect> collisionRect = std::make_shared<sf::FloatRect>();
 		
 		collisionRect->left = collisionObject.getAABB().left;
@@ -78,6 +79,19 @@ void Level::resolveCollisions(Player* p)
 		{
 			//std::cout << "Collision detected player" << std::endl;
 			p->collisionDetected();
+		}
+
+		const int POOLSIZE = 20;
+		for (int i = 0; i < POOLSIZE; i++)
+		{
+			if (projectileManager.getProjectilePool().at(i)->alive() == true)
+			{
+				if (projectileManager.getProjectilePool().at(i)->getSprite().getGlobalBounds().intersects(*collisionRect))
+				{
+					projectileManager.getProjectilePool().at(i)->collisionDetected();
+					
+				}
+			}
 		}
 
 	}

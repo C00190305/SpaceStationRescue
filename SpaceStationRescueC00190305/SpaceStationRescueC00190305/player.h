@@ -18,6 +18,7 @@ public:
 	void setVelocity(const sf::Vector2f& v);
 	void collisionDetected();
 	const sf::Sprite& getSprite();
+	ProjectileManager getProjectileManager();
 
 private:
 	sf::Sprite m_sprite;

@@ -1,3 +1,6 @@
+#ifndef WORKER_H
+#define WORKER_H
+
 #include <iostream>
 #include <random>
 #include <SFML/Graphics.hpp>
@@ -10,9 +13,9 @@
 
 class Worker
 {
-
 public:
 	Worker();
+	Worker(sf::Vector2f position);
 	void update();
 	void draw(sf::RenderWindow &window);
 private:
@@ -30,7 +33,7 @@ private:
 	const int RADIUS = 120;
 	float fovAngle = 90.0f;
 	bool m_wandering = true;
-	bool m_collected;
+	bool m_collected = false;
 
 	sf::Time m_wanderTimer;
 	sf::Clock m_wanderClock;
@@ -43,3 +46,5 @@ private:
 	float getDistance(sf::Vector2f v1, sf::Vector2f v2);
 
 };
+
+#endif // !WORKER_H

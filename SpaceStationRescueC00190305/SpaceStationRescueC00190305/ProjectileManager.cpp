@@ -48,3 +48,8 @@ void ProjectileManager::create(sf::Vector2f direction, sf::Vector2f pos, const i
 		}
 	}
 }
+
+std::vector<Projectile*> ProjectileManager::getProjectilePool()
+{
+	return m_projectiles;
+}

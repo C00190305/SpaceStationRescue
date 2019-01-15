@@ -11,6 +11,7 @@ Projectile::Projectile()
 	m_sprite.setTexture(m_texture);
 
 	m_sprite.setScale(1.0f, 1.0f);
+	m_initialPos = sf::Vector2f(80 * 32, 67 * 32);
 	velocity = 12.0f;
 	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
 	m_sprite.setPosition(sf::Vector2f(m_pos.x - 5, m_pos.y));
@@ -29,7 +30,6 @@ Projectile::Projectile(sf::Vector2f direction, sf::Vector2f pos, const int angle
 {
 	m_texture.loadFromFile("playerProjectile.png");
 	m_sprite.setTexture(m_texture);
-	
 	m_sprite.setScale(1.0f, 1.0f);
 	velocity = 12.0f;
 	m_sprite.setOrigin(m_sprite.getGlobalBounds().width / 2, m_sprite.getGlobalBounds().height / 2);
@@ -39,6 +39,7 @@ Projectile::Projectile(sf::Vector2f direction, sf::Vector2f pos, const int angle
 	
 	m_alive = true;
 }
+
 
 /////////////////////////////////////////////////////////////
 //checks if it has been used by the pool and updates accordingly
@@ -70,13 +71,20 @@ void Projectile::update()
 /////////////////////////////////////////////////////////////
 void Projectile::init(sf::Vector2f direction, sf::Vector2f pos, const int angle)
 {
-	m_alive = true; //set alive flag to begin drawing and updating
+	m_alive = true;
 	m_pos = pos;
 	m_ttl = 310; //Reset ttl so it doesn't instantly deactivate itself
 	m_angle = angle;
 	m_sprite.setRotation(m_angle);
 	m_direction = direction;
 	normalize(m_direction);
+	//m_alive = true;
+}
+
+void Projectile::collisionDetected()
+{
+	resetPosition();
+	m_alive = false;
 }
 
 /////////////////////////////////////////////////////////////
@@ -106,6 +114,12 @@ void Projectile::normalize(sf::Vector2f &v)
 	}
 }
 
+//reset the position of the projectile so it doesn't get stuck in a collision volume
+void Projectile::resetPosition()
+{
+	m_pos = m_initialPos;
+}
+
 bool Projectile::alive()
 {
 	return m_alive;
@@ -127,6 +141,21 @@ bool Projectile::checkDead()
 bool Projectile::inUse()
 {
 	return m_inUse;
+}
+
+sf::Sprite Projectile::getSprite()
+{
+	return m_sprite;
+}
+
+void Projectile::setTimeToLive(int ttl)
+{
+	m_ttl = ttl;
+}
+
+void Projectile::setAlive(bool alive)
+{
+	m_alive = alive;
 }
 
 Projectile::~Projectile()

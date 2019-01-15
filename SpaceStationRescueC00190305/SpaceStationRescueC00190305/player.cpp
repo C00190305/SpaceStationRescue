@@ -159,6 +159,11 @@ void Player::collisionDetected()
 	m_speed = 0;
 }
 
+ProjectileManager Player::getProjectileManager()
+{
+	return *m_projectileManager;
+}
+
 //Velocity setter
 void Player::setVelocity(const sf::Vector2f& v)
 {

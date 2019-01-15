@@ -15,7 +15,7 @@ class Level
 public:
 	Level();
 	Level(std::string path);
-	void update(Player* p);
+	void update(Player* p, ProjectileManager projectileManager);
 	void draw(sf::RenderWindow &window);
 	tmx::Map* getMap();
 	std::vector<MapLayer*> getDrawableLayers();
@@ -30,7 +30,7 @@ private:
 	std::vector<tmx::Object> m_objects;
 	std::vector<MapLayer*> m_drawableLayers;
 	
-	void resolveCollisions(Player* p);
+	void resolveCollisions(Player* p, ProjectileManager projectileManager);
 };
 
 
