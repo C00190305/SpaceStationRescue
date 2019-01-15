@@ -88,9 +88,10 @@ void Level::resolveCollisions(Player* p, ProjectileManager projectileManager)
 			{
 				if (projectileManager.getProjectilePool().at(i)->getSprite().getGlobalBounds().intersects(*collisionRect))
 				{
-					projectileManager.getProjectilePool().at(i)->collisionDetected();
-					
+           			projectileManager.getProjectilePool().at(i)->collisionDetected();
+					break;
 				}
+				
 			}
 		}
 
