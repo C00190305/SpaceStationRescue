@@ -17,6 +17,8 @@ public:
 	sf::Vector2f getVelocity();
 	void setVelocity(const sf::Vector2f& v);
 	void collisionDetected();
+	int getScore();
+	void addScore(int amount);
 	const sf::Sprite& getSprite();
 	ProjectileManager getProjectileManager();
 
@@ -36,6 +38,7 @@ private:
 	float m_speed;
 	int m_rotationAngle;
 	int nextAngle;
+	int m_score;
 	//const sf::Vector2f MAX_VELOCITY = sf::Vector2f(5.0f, 5.0f);
 	const float MAX_VELOCITY = 8.0f;
 
@@ -44,8 +47,6 @@ private:
 	int m_shootDelay = 300;
 
 	void move();
-	float getNewOrientation(float currentOrientation, sf::Vector2f currentVelocity);
-	void checkBounds(sf::RenderWindow &window);
 	void fireProjectile();
 	int normalize(sf::Vector2f v);
 

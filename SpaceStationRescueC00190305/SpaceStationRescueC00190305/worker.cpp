@@ -28,6 +28,7 @@ Worker::Worker(sf::Vector2f	position) : m_pos(position)
 
 	m_sprite.setScale(1.2f, 1.2f);
 
+	m_rotationAngle = thor::random(0.0f, 360.0f);
 	
 	m_radius = sf::CircleShape(RADIUS);
 	m_radius.setOrigin(m_radius.getGlobalBounds().width / 2, m_radius.getGlobalBounds().height / 2);
@@ -45,6 +46,9 @@ void Worker::update()
 
 	m_sprite.play();
 	m_sprite.update(sf::milliseconds(17));
+
+	m_pos += wander();
+
 	m_sprite.setPosition(m_pos);
 
 	m_radius.setPosition(m_sprite.getPosition());
@@ -59,22 +63,17 @@ void Worker::draw(sf::RenderWindow &window)
 
 
 //Returns a vector for wander behavior
-sf::Vector2f Worker::wander(sf::RenderWindow &window)
+sf::Vector2f Worker::wander()
 {
-	if (getDistance(m_pos, m_newPos) > 20) //if we havent reached the target
-	{
-		m_speed = 2.0f;
-	}
+	float PI = 3.14159;
 
-	if (getDistance(m_pos, m_newPos) < 20) //else get a new target to go towards
-	{
-		getNewTarget(window);
-	}
+	//Calculate new angle to walk toward
+	m_rotationAngle += thor::random(-15.0f, 15.0f);
 
-	m_direction.x = m_newPos.x - m_pos.x; //get direction
-	m_direction.y = m_newPos.y - m_pos.y;
+	m_direction.x = (sin(m_rotationAngle * PI / 180)); //in radians
+	m_direction.y = (-cos(m_rotationAngle * PI / 180)); //in radians
 
-	m_sprite.setRotation((atan2f(m_direction.y, m_direction.x) *  (180 / 3.14159)) + 90); //note, Y comes first in atan2f
+	//m_sprite.setRotation((atan2f(m_direction.y, m_direction.x) *  (180 / 3.14159)) + 90); //note, Y comes first in atan2f
 
 	m_direction = normalize(m_direction);
 
@@ -105,4 +104,9 @@ sf::Vector2f Worker::normalize(sf::Vector2f v)
 float Worker::getDistance(sf::Vector2f v1, sf::Vector2f v2)
 {
 	return sqrtf((v1.x - v2.x)*(v1.x - v2.x) + (v1.y - v2.y)*(v1.y - v2.y));
+}
+
+AnimatedSprite Worker::getSprite()
+{
+	return m_sprite;
 }

@@ -25,6 +25,7 @@ Player::Player()
 	m_velocity = sf::Vector2f(0.0f, 0.0f);
 
 	m_projectileManager = new ProjectileManager(m_pos);
+	m_score = 0;
 }
 
 //Update function to be called in the main update loop
@@ -141,6 +142,16 @@ sf::Vector2f Player::getPosition()
 sf::Vector2f Player::getVelocity()
 {
 	return m_velocity;
+}
+
+int Player::getScore()
+{
+	return m_score;
+}
+
+void Player::addScore(int amount)
+{
+	m_score += amount;
 }
 
 //Returns reference to sprite

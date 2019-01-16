@@ -18,7 +18,7 @@ class EnemyManager
 public:
 	EnemyManager();
 	EnemyManager(tmx::Map* map);
-	void updateEntities();
+	void updateEntities(Player* p);
 	void drawEntities(sf::RenderWindow &window);
 private:
 	std::vector<AlienNest*> m_alienNestVector;
@@ -27,6 +27,8 @@ private:
 	const int MAX_NESTS = 3;
 	const int TILE_WIDTH = 32;
 	const int TILE_HEIGHT = 32;
+
+	void resolveCollisions(Player* p);
 };
 
 

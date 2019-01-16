@@ -43,9 +43,9 @@ int main()
 		//update
 
 		player->update(*window);
-		hud->update(player->getPosition());
+		hud->update(player->getPosition(), player->getScore());
 		camera.setCenter(player->getPosition());
-		enemyManager.updateEntities();
+		enemyManager.updateEntities(player);
 		level.update(player, player->getProjectileManager());
 		window->setView(camera);
 		

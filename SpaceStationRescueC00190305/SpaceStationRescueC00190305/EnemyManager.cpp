@@ -32,13 +32,15 @@ EnemyManager::EnemyManager(tmx::Map* map) : m_mapRef(map)
 	m_workerVector.push_back(new Worker(sf::Vector2f(60 * TILE_WIDTH, 66 * TILE_WIDTH)));
 }
 
-void EnemyManager::updateEntities()
+void EnemyManager::updateEntities(Player* p)
 {
 	int workerVectorSize = m_workerVector.size();
 	for (int i = 0; i < workerVectorSize; i++)
 	{
 		m_workerVector.at(i)->update();
 	}
+
+	resolveCollisions(p);
 }
 
 void EnemyManager::drawEntities(sf::RenderWindow &window)
@@ -52,5 +54,19 @@ void EnemyManager::drawEntities(sf::RenderWindow &window)
 	for (int i = 0; i < workerVectorSize; i++)
 	{
 		m_workerVector.at(i)->draw(window);
+	}
+}
+
+void EnemyManager::resolveCollisions(Player* p)
+{
+	int workerVectorSize = m_workerVector.size();
+	for (int i = 0; i < workerVectorSize; i++)
+	{
+		if (m_workerVector.at(i)->getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
+		{
+			m_workerVector.erase(m_workerVector.begin() + i);
+			p->addScore(1);
+			break;
+		}
 	}
 }

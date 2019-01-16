@@ -24,16 +24,40 @@ HUD::HUD(Level level)
 	m_minimapRect = sf::RectangleShape(sf::Vector2f(2900 * 0.05f, 3000 * 0.05f));
 	m_minimapRect.setFillColor(sf::Color(0, 0, 0, 128));
 	m_minimapRect.setScale(1.0f, -1.0f); // flip to match the scale change on the RenderTexture
+
+	m_infoRect = sf::RectangleShape(sf::Vector2f(2900 * 0.05f, 3000 * 0.01f));
+	m_infoRect.setFillColor(sf::Color(0, 0, 0, 128));
+
+	m_font.loadFromFile("college.ttf");
+	m_scoreText.setFont(m_font);
+	m_scoreText.setCharacterSize(12);
+	m_scoreText.setStyle(sf::Text::Style::Bold);
 }
 
 //Update method for HUD components
 //@param offsetPosition: position to offset the drawing of the HUD
-void HUD::update(sf::Vector2f offsetPosition)
+void HUD::update(sf::Vector2f offsetPosition, int playerScore)
 {
-	int offsetX = 250;
-	int offsetY = 75;
-	m_minimapSprite.setPosition(sf::Vector2f(offsetPosition.x + offsetX, offsetPosition.y - offsetY));
-	m_minimapRect.setPosition(sf::Vector2f(offsetPosition.x + offsetX, offsetPosition.y - offsetY));
+	int mapOffsetX = 250;
+	int mapOffsetY = 75;
+	m_minimapSprite.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY));
+	m_minimapRect.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY));
+	m_minimapRect.setOutlineThickness(1.0f);
+	m_minimapRect.setOutlineColor(sf::Color::White);
+	
+	m_scoreString = "Workers Rescued: " + std::to_string(playerScore);
+	m_scoreText.setString(m_scoreString);
+	m_scoreText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 25));
+
+	if (playerScore == 17) //If all worker bots have been rescued
+	{
+		m_scoreText.setString("MISSION COMPLETE");
+		m_scoreText.setFillColor(sf::Color::Green);
+	}
+	
+	m_infoRect.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 25));
+	m_infoRect.setOutlineThickness(1.0f);
+	m_infoRect.setOutlineColor(sf::Color::White);
 }
 
 //Render method
@@ -41,5 +65,7 @@ void HUD::update(sf::Vector2f offsetPosition)
 void HUD::draw(sf::RenderWindow &window)
 {
 	window.draw(m_minimapRect);
+	window.draw(m_infoRect);
 	window.draw(m_minimapSprite);
+	window.draw(m_scoreText);
 }

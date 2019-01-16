@@ -18,6 +18,7 @@ public:
 	Worker(sf::Vector2f position);
 	void update();
 	void draw(sf::RenderWindow &window);
+	AnimatedSprite getSprite();
 private:
 	AnimatedSprite m_sprite;
 	Animation m_walkAnimation;
@@ -27,22 +28,22 @@ private:
 	sf::Vector2f m_direction;
 
 	sf::Vector2f m_newPos;
-	float m_speed = 10.0f;
+	float m_speed = 0.5f;
 
 	sf::CircleShape m_radius;
 	const int RADIUS = 120;
 	float fovAngle = 90.0f;
 	bool m_wandering = true;
 	bool m_collected = false;
+	float m_rotationAngle;
 
 	sf::Time m_wanderTimer;
 	sf::Clock m_wanderClock;
 
 	sf::Vector2f normalize(sf::Vector2f v);
 	//Wander behavior
-	sf::Vector2f wander(sf::RenderWindow &window);
+	sf::Vector2f wander();
 	void getNewTarget(sf::RenderWindow &window);
-	bool getCollected();
 	float getDistance(sf::Vector2f v1, sf::Vector2f v2);
 
 };
