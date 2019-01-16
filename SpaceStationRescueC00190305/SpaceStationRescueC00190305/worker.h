@@ -19,16 +19,18 @@ public:
 	void update();
 	void draw(sf::RenderWindow &window);
 	AnimatedSprite getSprite();
+	void collisionDetected();
 private:
 	AnimatedSprite m_sprite;
 	Animation m_walkAnimation;
 	sf::Texture m_texture;
 	sf::Vector2f m_pos;
+	sf::Vector2f m_oldPos;
 	sf::Vector2f m_velocity;
 	sf::Vector2f m_direction;
 
 	sf::Vector2f m_newPos;
-	float m_speed = 0.5f;
+	float m_speed = 0.4f;
 
 	sf::CircleShape m_radius;
 	const int RADIUS = 120;
@@ -43,7 +45,6 @@ private:
 	sf::Vector2f normalize(sf::Vector2f v);
 	//Wander behavior
 	sf::Vector2f wander();
-	void getNewTarget(sf::RenderWindow &window);
 	float getDistance(sf::Vector2f v1, sf::Vector2f v2);
 
 };

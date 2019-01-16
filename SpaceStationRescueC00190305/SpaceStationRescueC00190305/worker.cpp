@@ -24,9 +24,11 @@ Worker::Worker(sf::Vector2f	position) : m_pos(position)
 	m_sprite.setLooped(true);
 
 	m_sprite.setPosition(m_pos);
+	m_oldPos = m_pos;
 	m_newPos = sf::Vector2f(100, 100);
 
 	m_sprite.setScale(1.2f, 1.2f);
+	m_sprite.setOrigin(m_sprite.getLocalBounds().width / 2, m_sprite.getLocalBounds().height / 2);
 
 	m_rotationAngle = thor::random(0.0f, 360.0f);
 	
@@ -46,12 +48,23 @@ void Worker::update()
 
 	m_sprite.play();
 	m_sprite.update(sf::milliseconds(17));
+	
+	//Make sprite face the direction it is walking in
+	//by flipping scale in the X plane
+	if (m_rotationAngle > 180)
+	{
+		m_sprite.setScale(-1.2f, 1.2f);
+	}
 
+	else
+	{
+		m_sprite.setScale(1.2f, 1.2f);
+	}
+
+	m_oldPos = m_pos;
 	m_pos += wander();
-
 	m_sprite.setPosition(m_pos);
 
-	m_radius.setPosition(m_sprite.getPosition());
 }
 
 void Worker::draw(sf::RenderWindow &window)
@@ -73,7 +86,7 @@ sf::Vector2f Worker::wander()
 	m_direction.x = (sin(m_rotationAngle * PI / 180)); //in radians
 	m_direction.y = (-cos(m_rotationAngle * PI / 180)); //in radians
 
-	//m_sprite.setRotation((atan2f(m_direction.y, m_direction.x) *  (180 / 3.14159)) + 90); //note, Y comes first in atan2f
+	
 
 	m_direction = normalize(m_direction);
 
@@ -84,12 +97,11 @@ sf::Vector2f Worker::wander()
 
 }
 
-//sets the m_newPos vector to a new random position
-void Worker::getNewTarget(sf::RenderWindow &window)
+//For collision detection with level walls
+void Worker::collisionDetected()
 {
-	m_newPos.x = thor::random(0.0f, static_cast<float>(window.getSize().x));
-	m_newPos.y = thor::random(0.0f, static_cast<float>(window.getSize().y));
-	
+	m_pos = m_oldPos;
+	m_rotationAngle = m_rotationAngle * -1.0f;
 }
 
 //normalize vector

@@ -1,18 +1,18 @@
-#include "EnemyManager.h"
+#include "NPCManager.h"
 
-EnemyManager::EnemyManager()
+NPCManager::NPCManager()
 {
 
 }
 //Initialize containers for each type of enemy entity in the game
-EnemyManager::EnemyManager(tmx::Map* map) : m_mapRef(map)
+NPCManager::NPCManager(tmx::Map* map) : m_mapRef(map)
 {
 	//Nests
 	m_alienNestVector.push_back(new AlienNest(sf::Vector2f((58 * TILE_WIDTH) - 70, (5 * TILE_HEIGHT) - 60)));
 	m_alienNestVector.push_back(new AlienNest(sf::Vector2f((78 * TILE_WIDTH) - 70, (38 * TILE_HEIGHT) - 60)));
 	m_alienNestVector.push_back(new AlienNest(sf::Vector2f((13 * TILE_WIDTH) - 70, (73 * TILE_HEIGHT) - 60)));
 
-	//Worker bots
+	//Worker bots with initial positions
 	m_workerVector.push_back(new Worker(sf::Vector2f(6 * TILE_WIDTH, 34 * TILE_WIDTH)));
 	m_workerVector.push_back(new Worker(sf::Vector2f(6 * TILE_WIDTH, 41 * TILE_WIDTH)));
 	m_workerVector.push_back(new Worker(sf::Vector2f(20 * TILE_WIDTH, 34 * TILE_WIDTH)));
@@ -32,7 +32,7 @@ EnemyManager::EnemyManager(tmx::Map* map) : m_mapRef(map)
 	m_workerVector.push_back(new Worker(sf::Vector2f(60 * TILE_WIDTH, 66 * TILE_WIDTH)));
 }
 
-void EnemyManager::updateEntities(Player* p)
+void NPCManager::updateEntities(Player* p)
 {
 	int workerVectorSize = m_workerVector.size();
 	for (int i = 0; i < workerVectorSize; i++)
@@ -43,7 +43,7 @@ void EnemyManager::updateEntities(Player* p)
 	resolveCollisions(p);
 }
 
-void EnemyManager::drawEntities(sf::RenderWindow &window)
+void NPCManager::drawEntities(sf::RenderWindow &window)
 {
 	for (int i = 0; i < MAX_NESTS; i++)
 	{
@@ -57,7 +57,7 @@ void EnemyManager::drawEntities(sf::RenderWindow &window)
 	}
 }
 
-void EnemyManager::resolveCollisions(Player* p)
+void NPCManager::resolveCollisions(Player* p)
 {
 	int workerVectorSize = m_workerVector.size();
 	for (int i = 0; i < workerVectorSize; i++)
@@ -69,4 +69,9 @@ void EnemyManager::resolveCollisions(Player* p)
 			break;
 		}
 	}
+}
+
+std::vector<Worker*> NPCManager::getWorkers()
+{
+	return m_workerVector;
 }

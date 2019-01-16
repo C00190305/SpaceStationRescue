@@ -3,7 +3,7 @@
 #include "SFML/Graphics.hpp"
 #include "player.h"
 #include "Level.h"
-#include "EnemyManager.h"
+#include "NPCManager.h"
 #include "worker.h"
 #include "HUD.h"
 
@@ -23,7 +23,7 @@ int main()
 	Level level("level.tmx");
 	Player* player = new Player();
 	HUD* hud = new HUD(level);
-	EnemyManager enemyManager(level.getMap());
+	NPCManager npcManager(level.getMap());
 
 
 	while (window->isOpen())
@@ -45,8 +45,8 @@ int main()
 		player->update(*window);
 		hud->update(player->getPosition(), player->getScore());
 		camera.setCenter(player->getPosition());
-		enemyManager.updateEntities(player);
-		level.update(player, player->getProjectileManager());
+		npcManager.updateEntities(player);
+		level.update(player, player->getProjectileManager(), npcManager);
 		window->setView(camera);
 		
 		
@@ -56,7 +56,7 @@ int main()
 		window->clear();
 		
 		level.draw(*window);
-		enemyManager.drawEntities(*window);
+		npcManager.drawEntities(*window);
 		player->draw(*window);
 		hud->draw(*window);
 		window->display();

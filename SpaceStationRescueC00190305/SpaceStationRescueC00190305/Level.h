@@ -6,6 +6,7 @@
 #include "tmxlite/Config.hpp"
 #include "tmxlite/Map.hpp"
 #include "SFMLOrthogonalLayer.hpp"
+#include "NPCManager.h"
 #include "player.h"
 #include <vector>
 #include <iostream>
@@ -15,7 +16,7 @@ class Level
 public:
 	Level();
 	Level(std::string path);
-	void update(Player* p, ProjectileManager projectileManager);
+	void update(Player* p, ProjectileManager projectileManager, NPCManager npcManager);
 	void draw(sf::RenderWindow &window);
 	tmx::Map* getMap();
 	std::vector<MapLayer*> getDrawableLayers();
@@ -30,7 +31,7 @@ private:
 	std::vector<tmx::Object> m_objects;
 	std::vector<MapLayer*> m_drawableLayers;
 	
-	void resolveCollisions(Player* p, ProjectileManager projectileManager);
+	void resolveCollisions(Player* p, ProjectileManager projectileManager, NPCManager npcManager);
 };
 
 

@@ -51,9 +51,9 @@ Level::Level(std::string path) : m_path(path)
 	}
 }
 
-void Level::update(Player* p, ProjectileManager projectileManager)
+void Level::update(Player* p, ProjectileManager projectileManager, NPCManager npcManager)
 {
-	resolveCollisions(p, projectileManager);
+	resolveCollisions(p, projectileManager, npcManager);
 }
 
 void Level::draw(sf::RenderWindow &window)
@@ -63,7 +63,7 @@ void Level::draw(sf::RenderWindow &window)
 	window.draw(*layerTwo);
 }
 
-void Level::resolveCollisions(Player* p, ProjectileManager projectileManager)
+void Level::resolveCollisions(Player* p, ProjectileManager projectileManager, NPCManager npcManager)
 {
 	for (const auto& collisionObject : m_objects)
 	{
@@ -92,6 +92,16 @@ void Level::resolveCollisions(Player* p, ProjectileManager projectileManager)
 					break;
 				}
 				
+			}
+		}
+
+		const int NUM_WORKERS = npcManager.getWorkers().size();
+		for (int i = 0; i < NUM_WORKERS; i++)
+		{
+			if (npcManager.getWorkers().at(i)->getSprite().getGlobalBounds().intersects(*collisionRect))
+			{
+				npcManager.getWorkers().at(i)->collisionDetected();
+				break;
 			}
 		}
 

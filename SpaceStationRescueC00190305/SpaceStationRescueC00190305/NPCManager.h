@@ -1,5 +1,5 @@
-#ifndef ENEMYMANAGER_H
-#define ENEMYMANAGER_h
+#ifndef NPCMANAGER_H
+#define NPCMANAGER_H
 
 #include "tmxlite/Config.hpp"
 #include "tmxlite/Map.hpp"
@@ -13,13 +13,14 @@
 #include <vector>
 
 ///Class for managing collections of different enemy entities in the game
-class EnemyManager
+class NPCManager
 {
 public:
-	EnemyManager();
-	EnemyManager(tmx::Map* map);
+	NPCManager();
+	NPCManager(tmx::Map* map);
 	void updateEntities(Player* p);
 	void drawEntities(sf::RenderWindow &window);
+	std::vector<Worker*> getWorkers();
 private:
 	std::vector<AlienNest*> m_alienNestVector;
 	std::vector<Worker*> m_workerVector;
