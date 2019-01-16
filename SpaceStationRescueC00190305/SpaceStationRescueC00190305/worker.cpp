@@ -61,8 +61,11 @@ void Worker::update()
 		m_sprite.setScale(1.2f, 1.2f);
 	}
 
+	//Get the previous position of the entity before it moves to be used in wall collision resolution
 	m_oldPos = m_pos;
+
 	m_pos += wander();
+
 	m_sprite.setPosition(m_pos);
 
 }

@@ -9,6 +9,15 @@
 
 #include <iostream>
 #include <vector>
+//Simon Dowling C00190305
+//Space Station Rescue
+//Libraries to be linked are thor and tmxlite, both included in the project folder
+//SFML linked using $(SFML_SDK)\include and $(SFML_SDK)\lib
+//lib files for tmxLite: tmxlite-s-d.lib
+//lib files for thor: thor-d.lib
+//Features not implemented: Predators, nests spawn the Sweeper bots instead for that functionality.
+//
+//
 
 int main()
 {
