@@ -25,18 +25,22 @@ HUD::HUD(Level level)
 	m_minimapRect.setFillColor(sf::Color(0, 0, 0, 128));
 	m_minimapRect.setScale(1.0f, -1.0f); // flip to match the scale change on the RenderTexture
 
-	m_infoRect = sf::RectangleShape(sf::Vector2f(2900 * 0.05f, 3000 * 0.01f));
+	m_infoRect = sf::RectangleShape(sf::Vector2f(2900 * 0.05f, 3000 * 0.02f));
 	m_infoRect.setFillColor(sf::Color(0, 0, 0, 128));
 
 	m_font.loadFromFile("college.ttf");
 	m_scoreText.setFont(m_font);
 	m_scoreText.setCharacterSize(12);
 	m_scoreText.setStyle(sf::Text::Style::Bold);
+	m_healthText.setFont(m_font);
+	m_healthText.setCharacterSize(12);
+	m_healthText.setStyle(sf::Text::Style::Bold);
+	m_healthText.setFillColor(sf::Color::Cyan);
 }
 
 //Update method for HUD components
 //@param offsetPosition: position to offset the drawing of the HUD
-void HUD::update(sf::Vector2f offsetPosition, int playerScore)
+void HUD::update(sf::Vector2f offsetPosition, int playerScore, int playerHealth)
 {
 	int mapOffsetX = 250;
 	int mapOffsetY = 75;
@@ -48,6 +52,10 @@ void HUD::update(sf::Vector2f offsetPosition, int playerScore)
 	m_scoreString = "Workers Rescued: " + std::to_string(playerScore);
 	m_scoreText.setString(m_scoreString);
 	m_scoreText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 25));
+
+	m_healthString = "Shields: " + std::to_string(playerHealth);
+	m_healthText.setString(m_healthString);
+	m_healthText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 40));
 
 	if (playerScore == 17) //If all worker bots have been rescued
 	{
@@ -68,4 +76,5 @@ void HUD::draw(sf::RenderWindow &window)
 	window.draw(m_infoRect);
 	window.draw(m_minimapSprite);
 	window.draw(m_scoreText);
+	window.draw(m_healthText);
 }

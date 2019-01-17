@@ -32,6 +32,10 @@ Player::Player()
 //Update function to be called in the main update loop
 void Player::update(sf::RenderWindow &window)
 {
+	if (m_health <= 0)
+	{
+		restart();
+	}
 	move();
 	m_projectileManager->update();
 	fireProjectile();
@@ -124,6 +128,13 @@ void Player::fireProjectile()
 			m_shootTimer = m_shootClock.restart();
 		}
 	}
+}
+
+//Method for resetting the player if their health drops below 100.
+void Player::restart()
+{
+	m_health = 100;
+	m_pos = sf::Vector2f(80 * 32, 67 * 32);
 }
 
 //Vector normalization function

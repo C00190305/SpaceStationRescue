@@ -11,7 +11,10 @@ AlienNest::AlienNest(sf::Vector2f position) : m_pos(position)
 	m_sprite.setTexture(m_texture);
 	m_sprite.setPosition(m_pos);
 	m_missile = new NestMissile(sf::Vector2f(m_pos.x + m_sprite.getLocalBounds().width / 2, m_pos.y + m_sprite.getLocalBounds().height));
-	m_collisionRadius = sf::CircleShape(250.0f);
+	m_detectionRadius = sf::CircleShape(250.0f);
+	m_collisionRadius = sf::CircleShape(60.0f);
+	m_detectionRadius.setOrigin(m_detectionRadius.getLocalBounds().width / 2, m_detectionRadius.getLocalBounds().height / 2);
+	m_detectionRadius.setPosition(sf::Vector2f(m_pos.x + m_sprite.getLocalBounds().width / 2, m_pos.y + m_sprite.getLocalBounds().height / 2));
 	m_collisionRadius.setOrigin(m_collisionRadius.getLocalBounds().width / 2, m_collisionRadius.getLocalBounds().height / 2);
 	m_collisionRadius.setPosition(sf::Vector2f(m_pos.x + m_sprite.getLocalBounds().width / 2, m_pos.y + m_sprite.getLocalBounds().height / 2));
 	m_alive = true;
@@ -49,15 +52,21 @@ void AlienNest::draw(sf::RenderWindow& window)
 
 void AlienNest::fireProjectile()
 {
-	if (m_missile->alive() == false)
+
+	m_shootTimer = m_shootClock.getElapsedTime();
+	if (m_shootTimer.asMilliseconds() > m_shootDelay)
 	{
-		m_missile->init();
+		if (m_missile->alive() == false)
+		{
+			m_missile->init();
+		}
+		m_shootTimer = m_shootClock.restart();
 	}
 }
 
 void AlienNest::resolveCollisions(Player* p)
 {
-	if (m_collisionRadius.getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
+	if (m_detectionRadius.getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
 	{
 		fireProjectile();
 	}
@@ -71,4 +80,19 @@ bool AlienNest::isAlive()
 NestMissile* AlienNest::getMissile()
 {
 	return m_missile;
+}
+
+void AlienNest::reduceHealth(int amount)
+{
+	m_health -= amount;
+}
+
+sf::CircleShape AlienNest::getCollisionRadius()
+{
+	return m_collisionRadius;
+}
+
+sf::Sprite AlienNest::getSprite()
+{
+	return m_sprite;
 }

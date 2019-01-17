@@ -51,7 +51,8 @@ void NPCManager::updateEntities(Player* p)
 
 void NPCManager::drawEntities(sf::RenderWindow &window)
 {
-	for (int i = 0; i < MAX_NESTS; i++)
+	int nestVectorSize = m_alienNestVector.size();
+	for (int i = 0; i < nestVectorSize; i++)
 	{
 		m_alienNestVector.at(i)->draw(window);
 	}
@@ -79,10 +80,30 @@ void NPCManager::resolveCollisions(Player* p)
 	int nestVectorSize = m_alienNestVector.size();
 	for (int i = 0; i < nestVectorSize; i++)
 	{
+		//Check and resolve collisions between nest missiles and players
 		if (m_alienNestVector.at(i)->getMissile()->getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
 		{
-			p->reduceHealth(5);
-			m_alienNestVector.at(i)->getMissile()->setAlive(false);
+			m_alienNestVector.at(i)->getMissile()->collisionDetected();
+			p->reduceHealth(2);
+			break;
+		}
+
+		//Check and resolve collisions between nests and player projectiles
+		int playerBulletVectorSize = p->getProjectileManager().getProjectilePool().size();
+		for (int j = 0; j < playerBulletVectorSize; j++)
+		{
+			if (m_alienNestVector.at(i)->getCollisionRadius().getGlobalBounds().intersects(p->getProjectileManager().getProjectilePool().at(j)->getSprite().getGlobalBounds()))
+			{
+				m_alienNestVector.at(i)->reduceHealth(1);
+				p->getProjectileManager().getProjectilePool().at(j)->collisionDetected();
+				break;
+			}
+		}
+
+		//If the nest is dead, remove it from memory
+		if (m_alienNestVector.at(i)->isAlive() == false)
+		{
+			m_alienNestVector.erase(m_alienNestVector.begin() + i);
 			break;
 		}
 	}
