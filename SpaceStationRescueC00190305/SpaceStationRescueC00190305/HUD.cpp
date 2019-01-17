@@ -46,8 +46,12 @@ HUD::HUD(Level level)
 
 //Update method for HUD components
 //@param offsetPosition: position to offset the drawing of the HUD
+//@param playerScore: the score from the player object
+//@param playerHealth: the health from the player object
+//@param numNests: the number of nests remaining the in the game
 void HUD::update(sf::Vector2f offsetPosition, int playerScore, int playerHealth, int numNests)
 {
+	//Set minimap
 	int mapOffsetX = 250;
 	int mapOffsetY = 75;
 	m_minimapSprite.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY));
@@ -55,14 +59,17 @@ void HUD::update(sf::Vector2f offsetPosition, int playerScore, int playerHealth,
 	m_minimapRect.setOutlineThickness(1.0f);
 	m_minimapRect.setOutlineColor(sf::Color::White);
 	
+	//Set score element
 	m_scoreString = "Workers Rescued: " + std::to_string(playerScore);
 	m_scoreText.setString(m_scoreString);
 	m_scoreText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 25));
 
+	//Set health element
 	m_healthString = "Shields: " + std::to_string(playerHealth);
 	m_healthText.setString(m_healthString);
 	m_healthText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 40));
 
+	//Set number of nests element
 	m_numNestsString = "Nests: " + std::to_string(numNests);
 	m_numNestsText.setString(m_numNestsString);
 	m_numNestsText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 55));

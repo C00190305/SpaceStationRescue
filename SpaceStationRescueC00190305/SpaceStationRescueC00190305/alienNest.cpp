@@ -20,7 +20,8 @@ AlienNest::AlienNest(sf::Vector2f position) : m_pos(position)
 	m_alive = true;
 	
 }
-
+//Update method
+//@param p: player object
 void AlienNest::update(Player* p)
 {
 	if (m_health <= 0)

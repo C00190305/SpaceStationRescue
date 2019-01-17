@@ -116,6 +116,7 @@ void Player::move()
 	
 }
 
+//Fires a projectile providing there is one available and the timer allows
 void Player::fireProjectile()
 {
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Key::Space))

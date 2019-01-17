@@ -34,7 +34,7 @@ int main()
 	HUD* hud = new HUD(level);
 	NPCManager npcManager(level.getMap());
 
-
+	//Main game loop
 	while (window->isOpen())
 	{
 		sf::Event event;

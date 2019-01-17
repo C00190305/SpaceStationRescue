@@ -32,6 +32,8 @@ NPCManager::NPCManager(tmx::Map* map) : m_mapRef(map)
 	m_workerVector.push_back(new Worker(sf::Vector2f(60 * TILE_WIDTH, 66 * TILE_WIDTH)));
 }
 
+//Update
+//@param p: Player object
 void NPCManager::updateEntities(Player* p)
 {
 	int workerVectorSize = m_workerVector.size();
@@ -49,6 +51,7 @@ void NPCManager::updateEntities(Player* p)
 	resolveCollisions(p);
 }
 
+//Render entities
 void NPCManager::drawEntities(sf::RenderWindow &window)
 {
 	int nestVectorSize = m_alienNestVector.size();
@@ -64,8 +67,10 @@ void NPCManager::drawEntities(sf::RenderWindow &window)
 	}
 }
 
+//NPC Collision detection method
 void NPCManager::resolveCollisions(Player* p)
 {
+	//Check collision between player and worker bots
 	int workerVectorSize = m_workerVector.size();
 	for (int i = 0; i < workerVectorSize; i++)
 	{
@@ -77,10 +82,10 @@ void NPCManager::resolveCollisions(Player* p)
 		}
 	}
 
+	//Check and resolve collisions between nest missiles and players
 	int nestVectorSize = m_alienNestVector.size();
 	for (int i = 0; i < nestVectorSize; i++)
 	{
-		//Check and resolve collisions between nest missiles and players
 		if (m_alienNestVector.at(i)->getMissile()->getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
 		{
 			m_alienNestVector.at(i)->getMissile()->collisionDetected();

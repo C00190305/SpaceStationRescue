@@ -5,6 +5,8 @@ NestMissile::NestMissile()
 
 }
 
+//Constructor
+//@param pos: sf::vector2f of the position the missile should be initially placed
 NestMissile::NestMissile(sf::Vector2f pos) : m_pos(pos), m_spawnPos(pos)
 {
 	m_texture.loadFromFile("enemyProjectile.png");
@@ -14,6 +16,9 @@ NestMissile::NestMissile(sf::Vector2f pos) : m_pos(pos), m_spawnPos(pos)
 	m_alive = false;
 }
 
+//Update method
+//@param targetPosition: the position of the target to be pursued
+//@param targetVelocity: the velocity of the target to be pursued
 void NestMissile::update(sf::Vector2f targetPosition, sf::Vector2f targetVelocity)
 {
 	if (m_ttl <= 0)
@@ -53,6 +58,7 @@ void NestMissile::collisionDetected()
 	reset();
 }
 
+//Reset the missile after a collision
 void NestMissile::reset()
 {
 	m_pos = m_spawnPos;
