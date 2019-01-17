@@ -18,16 +18,17 @@ void NestMissile::update(sf::Vector2f targetPosition, sf::Vector2f targetVelocit
 {
 	if (m_ttl <= 0)
 	{
+		reset();
 		m_alive = false;
+		
 	}
 
 	if (m_alive == true)
 	{
 		intercept(targetPosition, targetVelocity);
-		m_sprite.setPosition(m_pos);
 		m_ttl = m_ttl - 1;
 	}
-
+	m_sprite.setPosition(m_pos);
 
 }
 

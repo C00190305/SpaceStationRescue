@@ -30,16 +30,16 @@ HUD::HUD(Level level)
 
 	m_font.loadFromFile("college.ttf");
 	m_scoreText.setFont(m_font);
-	m_scoreText.setCharacterSize(12);
+	m_scoreText.setCharacterSize(13);
 	m_scoreText.setStyle(sf::Text::Style::Bold);
 
 	m_healthText.setFont(m_font);
-	m_healthText.setCharacterSize(12);
+	m_healthText.setCharacterSize(13);
 	m_healthText.setStyle(sf::Text::Style::Bold);
 	m_healthText.setFillColor(sf::Color::Cyan);
 
 	m_numNestsText.setFont(m_font);
-	m_numNestsText.setCharacterSize(12);
+	m_numNestsText.setCharacterSize(13);
 	m_numNestsText.setStyle(sf::Text::Style::Bold);
 	m_numNestsText.setFillColor(sf::Color::Red);
 }

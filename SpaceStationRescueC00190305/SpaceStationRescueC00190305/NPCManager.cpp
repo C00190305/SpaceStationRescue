@@ -84,7 +84,7 @@ void NPCManager::resolveCollisions(Player* p)
 		if (m_alienNestVector.at(i)->getMissile()->getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
 		{
 			m_alienNestVector.at(i)->getMissile()->collisionDetected();
-			p->reduceHealth(2);
+			p->reduceHealth(15);
 			break;
 		}
 
