@@ -21,6 +21,8 @@ public:
 	void addScore(int amount);
 	const sf::Sprite& getSprite();
 	ProjectileManager getProjectileManager();
+	int getHealth();
+	void reduceHealth(int amount);
 
 private:
 	sf::Sprite m_sprite;
@@ -39,6 +41,7 @@ private:
 	int m_rotationAngle;
 	int nextAngle;
 	int m_score;
+	int m_health;
 	//const sf::Vector2f MAX_VELOCITY = sf::Vector2f(5.0f, 5.0f);
 	const float MAX_VELOCITY = 8.0f;
 

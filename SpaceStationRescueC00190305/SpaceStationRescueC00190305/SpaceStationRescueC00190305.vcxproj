@@ -150,6 +150,7 @@
     <ClCompile Include="alienNest.cpp" />
     <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="Animation.cpp" />
+    <ClCompile Include="NestMissile.cpp" />
     <ClCompile Include="NPCManager.cpp" />
     <ClCompile Include="HUD.cpp" />
     <ClCompile Include="Level.cpp" />
@@ -165,6 +166,7 @@
     <ClInclude Include="alienNest.h" />
     <ClInclude Include="AnimatedSprite.hpp" />
     <ClInclude Include="Animation.hpp" />
+    <ClInclude Include="NestMissile.h" />
     <ClInclude Include="NPCManager.h" />
     <ClInclude Include="HUD.h" />
     <ClInclude Include="Level.h" />

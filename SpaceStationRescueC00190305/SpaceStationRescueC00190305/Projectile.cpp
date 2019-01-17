@@ -80,6 +80,8 @@ void Projectile::init(sf::Vector2f direction, sf::Vector2f pos, const int angle)
 	m_alive = true;
 }
 
+
+
 void Projectile::collisionDetected()
 {
 	resetPosition();

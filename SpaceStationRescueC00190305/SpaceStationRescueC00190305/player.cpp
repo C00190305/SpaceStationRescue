@@ -26,6 +26,7 @@ Player::Player()
 
 	m_projectileManager = new ProjectileManager(m_pos);
 	m_score = 0;
+	m_health = 100;
 }
 
 //Update function to be called in the main update loop
@@ -130,6 +131,16 @@ int Player::normalize(sf::Vector2f v)
 {
 	return (sqrt((v.x * v.x) + (v.y * v.y)));
 	
+}
+
+int Player::getHealth()
+{
+	return m_health;
+}
+
+void Player::reduceHealth(int amount)
+{
+	m_health -= amount;
 }
 
 //Returns position as sf::vector2f

@@ -40,6 +40,12 @@ void NPCManager::updateEntities(Player* p)
 		m_workerVector.at(i)->update();
 	}
 
+	int nestVectorSize = m_alienNestVector.size();
+	for (int i = 0; i < nestVectorSize; i++)
+	{
+		m_alienNestVector.at(i)->update(p);
+	}
+
 	resolveCollisions(p);
 }
 
@@ -66,6 +72,17 @@ void NPCManager::resolveCollisions(Player* p)
 		{
 			m_workerVector.erase(m_workerVector.begin() + i);
 			p->addScore(1);
+			break;
+		}
+	}
+
+	int nestVectorSize = m_alienNestVector.size();
+	for (int i = 0; i < nestVectorSize; i++)
+	{
+		if (m_alienNestVector.at(i)->getMissile().getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
+		{
+			p->reduceHealth(5);
+			m_alienNestVector.at(i)->getMissile().collisionDetected();
 			break;
 		}
 	}
