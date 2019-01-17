@@ -7,7 +7,7 @@ class HUD
 public:
 	HUD(Level level);
 	~HUD();
-	void update(sf::Vector2f offsetPosition, int playerScore, int playerHealth);
+	void update(sf::Vector2f offsetPosition, int playerScore, int playerHealth, int numNests);
 	void draw(sf::RenderWindow& window);
 private:
 	sf::RenderTexture m_minimapTexture;
@@ -20,6 +20,9 @@ private:
 	sf::Font m_font;
 	std::string m_scoreString;
 	std::string m_healthString;
+	std::string m_numNestsString;
 	sf::Text m_scoreText;
 	sf::Text m_healthText;
+	sf::Text m_numNestsText;
+
 };

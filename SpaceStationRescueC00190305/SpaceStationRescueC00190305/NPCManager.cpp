@@ -113,3 +113,8 @@ std::vector<Worker*> NPCManager::getWorkers()
 {
 	return m_workerVector;
 }
+
+std::vector<AlienNest*> NPCManager::getNests()
+{
+	return m_alienNestVector;
+}

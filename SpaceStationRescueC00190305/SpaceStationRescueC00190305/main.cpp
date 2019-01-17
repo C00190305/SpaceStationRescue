@@ -52,7 +52,7 @@ int main()
 		//update
 
 		player->update(*window);
-		hud->update(player->getPosition(), player->getScore(), player->getHealth());
+		hud->update(player->getPosition(), player->getScore(), player->getHealth(), npcManager.getNests().size());
 		camera.setCenter(player->getPosition());
 		npcManager.updateEntities(player);
 		level.update(player, player->getProjectileManager(), npcManager);

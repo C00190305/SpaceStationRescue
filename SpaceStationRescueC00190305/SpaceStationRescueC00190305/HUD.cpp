@@ -32,15 +32,21 @@ HUD::HUD(Level level)
 	m_scoreText.setFont(m_font);
 	m_scoreText.setCharacterSize(12);
 	m_scoreText.setStyle(sf::Text::Style::Bold);
+
 	m_healthText.setFont(m_font);
 	m_healthText.setCharacterSize(12);
 	m_healthText.setStyle(sf::Text::Style::Bold);
 	m_healthText.setFillColor(sf::Color::Cyan);
+
+	m_numNestsText.setFont(m_font);
+	m_numNestsText.setCharacterSize(12);
+	m_numNestsText.setStyle(sf::Text::Style::Bold);
+	m_numNestsText.setFillColor(sf::Color::Red);
 }
 
 //Update method for HUD components
 //@param offsetPosition: position to offset the drawing of the HUD
-void HUD::update(sf::Vector2f offsetPosition, int playerScore, int playerHealth)
+void HUD::update(sf::Vector2f offsetPosition, int playerScore, int playerHealth, int numNests)
 {
 	int mapOffsetX = 250;
 	int mapOffsetY = 75;
@@ -56,6 +62,10 @@ void HUD::update(sf::Vector2f offsetPosition, int playerScore, int playerHealth)
 	m_healthString = "Shields: " + std::to_string(playerHealth);
 	m_healthText.setString(m_healthString);
 	m_healthText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 40));
+
+	m_numNestsString = "Nests: " + std::to_string(numNests);
+	m_numNestsText.setString(m_numNestsString);
+	m_numNestsText.setPosition(sf::Vector2f(offsetPosition.x + mapOffsetX, offsetPosition.y - mapOffsetY + 55));
 
 	if (playerScore == 17) //If all worker bots have been rescued
 	{
@@ -77,4 +87,5 @@ void HUD::draw(sf::RenderWindow &window)
 	window.draw(m_minimapSprite);
 	window.draw(m_scoreText);
 	window.draw(m_healthText);
+	window.draw(m_numNestsText);
 }

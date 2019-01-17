@@ -21,6 +21,7 @@ public:
 	void updateEntities(Player* p);
 	void drawEntities(sf::RenderWindow &window);
 	std::vector<Worker*> getWorkers();
+	std::vector<AlienNest*> getNests();
 private:
 	std::vector<AlienNest*> m_alienNestVector;
 	std::vector<Worker*> m_workerVector;
