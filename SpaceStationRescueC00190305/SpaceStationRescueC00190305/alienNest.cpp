@@ -68,7 +68,7 @@ bool AlienNest::isAlive()
 	return m_alive;
 }
 
-NestMissile AlienNest::getMissile()
+NestMissile* AlienNest::getMissile()
 {
-	return *m_missile;
+	return m_missile;
 }

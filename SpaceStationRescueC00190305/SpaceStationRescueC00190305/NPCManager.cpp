@@ -79,10 +79,10 @@ void NPCManager::resolveCollisions(Player* p)
 	int nestVectorSize = m_alienNestVector.size();
 	for (int i = 0; i < nestVectorSize; i++)
 	{
-		if (m_alienNestVector.at(i)->getMissile().getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
+		if (m_alienNestVector.at(i)->getMissile()->getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
 		{
 			p->reduceHealth(5);
-			m_alienNestVector.at(i)->getMissile().collisionDetected();
+			m_alienNestVector.at(i)->getMissile()->setAlive(false);
 			break;
 		}
 	}

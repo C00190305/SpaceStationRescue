@@ -5,28 +5,27 @@ NestMissile::NestMissile()
 
 }
 
-NestMissile::NestMissile(sf::Vector2f pos) : m_pos(pos)
+NestMissile::NestMissile(sf::Vector2f pos) : m_pos(pos), m_spawnPos(pos)
 {
 	m_texture.loadFromFile("enemyProjectile.png");
 	m_sprite.setTexture(m_texture);
 	m_sprite.setPosition(m_pos);
 	m_sprite.setScale(2.0f, 2.0f);
-	m_spawnPos = pos;
 	m_alive = false;
 }
 
 void NestMissile::update(sf::Vector2f targetPosition, sf::Vector2f targetVelocity)
 {
+	if (m_ttl <= 0)
+	{
+		m_alive = false;
+	}
+
 	if (m_alive == true)
 	{
 		intercept(targetPosition, targetVelocity);
 		m_sprite.setPosition(m_pos);
 		m_ttl = m_ttl - 1;
-	}
-
-	if (m_ttl <= 0)
-	{
-		m_alive = false;
 	}
 
 
@@ -42,14 +41,15 @@ void NestMissile::draw(sf::RenderWindow& window)
 
 void NestMissile::init()
 {
+	m_pos = m_spawnPos;
 	m_alive = true;
 	m_ttl = 300;
 }
 
 void NestMissile::collisionDetected()
 {
-	reset();
 	m_ttl = 0;
+	reset();
 }
 
 void NestMissile::reset()

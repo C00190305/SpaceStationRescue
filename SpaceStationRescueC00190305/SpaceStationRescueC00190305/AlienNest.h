@@ -18,7 +18,7 @@ public:
 	void update(Player* p);
 	void draw(sf::RenderWindow &window);
 	bool isAlive();
-	NestMissile getMissile();
+	NestMissile* getMissile();
 private:
 	sf::Vector2f m_pos;
 	sf::Sprite m_sprite;
