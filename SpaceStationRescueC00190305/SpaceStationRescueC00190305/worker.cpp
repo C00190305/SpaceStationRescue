@@ -104,7 +104,7 @@ sf::Vector2f Worker::wander()
 void Worker::collisionDetected()
 {
 	m_pos = m_oldPos;
-	m_rotationAngle = m_rotationAngle * -1.0f;
+	m_rotationAngle += 180.0f;
 }
 
 //normalize vector
@@ -124,4 +124,9 @@ float Worker::getDistance(sf::Vector2f v1, sf::Vector2f v2)
 AnimatedSprite Worker::getSprite()
 {
 	return m_sprite;
+}
+
+sf::Vector2f Worker::getPosition()
+{
+	return m_pos;
 }

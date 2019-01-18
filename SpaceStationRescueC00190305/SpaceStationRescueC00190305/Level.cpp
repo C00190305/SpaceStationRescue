@@ -105,6 +105,18 @@ void Level::resolveCollisions(Player* p, ProjectileManager projectileManager, NP
 			}
 		}
 
+		for (int i = 0; i < npcManager.getNests().size(); i++)
+		{
+			for (int j = 0; j < npcManager.getNests().at(i)->getSweepers().size(); j++)
+			{
+				if (npcManager.getNests().at(i)->getSweepers().at(j)->getSprite().getGlobalBounds().intersects(*collisionRect))
+				{
+					npcManager.getNests().at(i)->getSweepers().at(j)->wallCollisionDetected();
+					break;
+				}
+			}
+		}
+
 	}
 }
 

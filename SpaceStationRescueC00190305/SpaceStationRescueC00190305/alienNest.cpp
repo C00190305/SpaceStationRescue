@@ -22,7 +22,7 @@ AlienNest::AlienNest(sf::Vector2f position) : m_pos(position)
 }
 //Update method
 //@param p: player object
-void AlienNest::update(Player* p)
+void AlienNest::update(Player* p, std::vector<Worker*> workerVector)
 {
 	if (m_health <= 0)
 	{
@@ -37,7 +37,9 @@ void AlienNest::update(Player* p)
 		//spawn new alien
 		//check collision between nest and player projectile
 		m_missile->update(p->getPosition(), p->getVelocity());
+		spawnSweeper();
 		resolveCollisions(p);
+		updateSweepers(workerVector);
 	}
 
 }
@@ -46,11 +48,33 @@ void AlienNest::draw(sf::RenderWindow& window)
 {
 	if (m_alive == true)
 	{
-		window.draw(m_sprite);
 		m_missile->draw(window);
+		window.draw(m_sprite);
+		for (int i = 0; i < m_sweepers.size(); i++)
+		{
+			m_sweepers.at(i)->draw(window);
+		}
 	}
 }
 
+//Function that resolves collisions between workers and sweepers
+//@param workerVector: a std::vector of pointers to worker objects.
+void AlienNest::updateSweepers(std::vector<Worker*> workerVector)
+{
+	for (int i = 0; i < workerVector.size(); i++)
+	{
+		for (int j = 0; j < m_sweepers.size(); j++)
+		{
+			m_sweepers.at(j)->update(workerVector.at(i));
+			if (workerVector.at(i)->getSprite().getGlobalBounds().intersects(m_sweepers.at(j)->getSprite().getGlobalBounds()))
+			{
+				workerVector.erase(workerVector.begin() + i);
+				m_sweepers.at(j)->capturedWorker();
+			}
+		}
+	}
+}
+//Fires a projectile is one is available and the timer allows.
 void AlienNest::fireProjectile()
 {
 
@@ -63,6 +87,21 @@ void AlienNest::fireProjectile()
 		}
 		m_shootTimer = m_shootClock.restart();
 	}
+}
+
+//Spawns a new sweeper if the timer allows and the maximum hasn't been spawned yet.
+void AlienNest::spawnSweeper()
+{
+	m_spawnTimer = m_spawnClock.getElapsedTime();
+	if (m_spawnTimer.asMilliseconds() > m_spawnDelay)
+	{
+		if (m_sweepers.size() <= MAX_SWEEPERS)
+		{
+			m_sweepers.push_back(new Sweeper(sf::Vector2f(m_pos.x + m_sprite.getLocalBounds().width / 2, m_pos.y + m_sprite.getLocalBounds().height / 2)));
+			m_spawnTimer = m_spawnClock.restart();
+		}
+	}
+	
 }
 
 void AlienNest::resolveCollisions(Player* p)
@@ -96,4 +135,9 @@ sf::CircleShape AlienNest::getCollisionRadius()
 sf::Sprite AlienNest::getSprite()
 {
 	return m_sprite;
+}
+
+std::vector<Sweeper*> AlienNest::getSweepers()
+{
+	return m_sweepers;
 }

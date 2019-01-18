@@ -20,6 +20,7 @@ public:
 	void draw(sf::RenderWindow &window);
 	AnimatedSprite getSprite();
 	void collisionDetected();
+	sf::Vector2f getPosition();
 private:
 	AnimatedSprite m_sprite;
 	Animation m_walkAnimation;

@@ -45,7 +45,7 @@ void NPCManager::updateEntities(Player* p)
 	int nestVectorSize = m_alienNestVector.size();
 	for (int i = 0; i < nestVectorSize; i++)
 	{
-		m_alienNestVector.at(i)->update(p);
+		m_alienNestVector.at(i)->update(p, m_workerVector);
 	}
 
 	resolveCollisions(p);

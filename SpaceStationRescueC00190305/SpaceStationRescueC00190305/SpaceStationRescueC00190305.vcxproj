@@ -70,8 +70,8 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>$(SFML_SDK)\include;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
-    <LibraryPath>$(SFML_SDK)\lib;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;$(LibraryPath)</LibraryPath>
+    <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
+    <LibraryPath>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <IncludePath>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github repos\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include;$(IncludePath)</IncludePath>
@@ -91,10 +91,10 @@
       <Optimization>Disabled</Optimization>
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SFML_SDK)\include;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(SFML_SDK)\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\include;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\include</AdditionalIncludeDirectories>
     </ClCompile>
     <Link>
-      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\gameuser\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>$(SFML_SDK)\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\thor-v2.0-msvc2015\lib;C:\Users\simon\Desktop\Github Repositories\SpaceStationRescue\SpaceStationRescueC00190305\SpaceStationRescueC00190305\tmxlite\lib</AdditionalLibraryDirectories>
       <AdditionalDependencies>thor-d.lib;sfml-graphics-d.lib;sfml-audio-d.lib;sfml-network-d.lib;sfml-system-d.lib;sfml-window-d.lib;libtmxlite-s-d.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
   </ItemDefinitionGroup>
@@ -146,7 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="alien.cpp" />
+    <ClCompile Include="Sweeper.cpp" />
     <ClCompile Include="alienNest.cpp" />
     <ClCompile Include="AnimatedSprite.cpp" />
     <ClCompile Include="Animation.cpp" />
@@ -162,7 +162,7 @@
     <ClCompile Include="worker.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="alien.h" />
+    <ClInclude Include="Sweeper.h" />
     <ClInclude Include="alienNest.h" />
     <ClInclude Include="AnimatedSprite.hpp" />
     <ClInclude Include="Animation.hpp" />
