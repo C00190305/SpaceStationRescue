@@ -45,7 +45,7 @@ void NPCManager::updateEntities(Player* p)
 	int nestVectorSize = m_alienNestVector.size();
 	for (int i = 0; i < nestVectorSize; i++)
 	{
-		m_alienNestVector.at(i)->update(p, m_workerVector);
+		m_alienNestVector.at(i)->update(p, &m_workerVector);
 	}
 
 	resolveCollisions(p);
@@ -103,7 +103,22 @@ void NPCManager::resolveCollisions(Player* p)
 				p->getProjectileManager().getProjectilePool().at(j)->collisionDetected();
 				break;
 			}
+		} 
+
+		//If a player rams a sweeper
+		for (int j = 0; j < m_alienNestVector.at(i)->getSweepers().size(); j++)
+		{
+			if (p->getSprite().getGlobalBounds().intersects(m_alienNestVector.at(i)->getSweepers().at(j)->getSprite().getGlobalBounds()))
+			{
+				//Add the number of captured workers to the player's score
+				p->addScore(m_alienNestVector.at(i)->getSweepers().at(j)->getWorkersCaptured());
+				m_alienNestVector.at(i)->getSweepers().at(j)->setCapturedWorkers(0); //Reset captured workers so score doesn't increase infinitely
+				m_alienNestVector.at(i)->getSweepers().at(j)->wallCollisionDetected();
+				break;
+			}
 		}
+
+
 
 		//If the nest is dead, remove it from memory
 		if (m_alienNestVector.at(i)->isAlive() == false)

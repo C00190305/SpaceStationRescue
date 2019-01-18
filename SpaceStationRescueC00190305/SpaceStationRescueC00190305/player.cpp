@@ -150,9 +150,21 @@ int Player::getHealth()
 	return m_health;
 }
 
+//Reduce health function
 void Player::reduceHealth(int amount)
 {
 	m_health -= amount;
+}
+
+//Add health function, doesnt allow over 100 health
+void Player::addHealth(int amount)
+{
+	m_health += amount;
+
+	if (m_health > 100)
+	{
+		m_health = 100;
+	}
 }
 
 //Returns position as sf::vector2f

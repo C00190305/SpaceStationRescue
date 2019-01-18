@@ -25,6 +25,13 @@ Sweeper::Sweeper(sf::Vector2f spawnPosition) : m_pos(spawnPosition)
 	m_seeking = false;
 
 	m_workersCaptured = 0;
+
+	m_font.loadFromFile("college.ttf");
+	m_text.setFont(m_font);
+	m_text.setFillColor(sf::Color::Yellow);
+	m_text.setCharacterSize(14);
+	m_text.setOutlineThickness(0.5f);
+	m_text.setOutlineColor(sf::Color::Black);
 	
 }
 
@@ -32,18 +39,6 @@ Sweeper::Sweeper(sf::Vector2f spawnPosition) : m_pos(spawnPosition)
 //@param targetPosition: position of the entity to seek
 void Sweeper::update(Worker* worker)
 {
-
-	if (m_seeking == true)
-	{
-		m_speed = 0.1f; //increase speed
-		m_pos += seek(worker->getPosition());
-	}
-
-	if (m_seeking == false)
-	{
-		m_speed = 0.04f; //put speed back to original value
-		m_pos += wander();
-	}
 
 	if (m_detectionRadius.getGlobalBounds().intersects(worker->getSprite().getGlobalBounds()))
 	{
@@ -65,6 +60,21 @@ void Sweeper::update(Worker* worker)
 		m_sprite.setScale(0.10f, 0.10f);
 	}
 
+	if (m_seeking == true)
+	{
+		m_speed = 0.1f; //increase speed
+		m_pos += seek(worker->getPosition());
+	}
+
+	if (m_seeking == false)
+	{
+		m_speed = 0.04f; //put speed back to original value
+		m_pos += wander();
+	}
+
+	m_text.setString(std::to_string(m_workersCaptured));
+
+	m_text.setPosition(m_pos.x + 20, m_pos.y - 15);
 	m_detectionRadius.setOrigin(sf::Vector2f(m_detectionRadius.getLocalBounds().width / 2, m_detectionRadius.getLocalBounds().height / 2));
 	m_detectionRadius.setPosition(sf::Vector2f(m_pos.x + m_sprite.getGlobalBounds().width / 2 - 15, m_pos.y + m_sprite.getGlobalBounds().height / 2 - 15));
 	m_sprite.setPosition(m_pos);
@@ -73,6 +83,7 @@ void Sweeper::update(Worker* worker)
 void Sweeper::draw(sf::RenderWindow &window)
 {
 	window.draw(m_sprite);
+	window.draw(m_text);
 }
 
 sf::Vector2f Sweeper::normalize(sf::Vector2f v)
@@ -129,5 +140,15 @@ void Sweeper::capturedWorker()
 sf::Sprite Sweeper::getSprite()
 {
 	return m_sprite;
+}
+
+int Sweeper::getWorkersCaptured()
+{
+	return m_workersCaptured;
+}
+
+void Sweeper::setCapturedWorkers(int val)
+{
+	m_workersCaptured = val;
 }
 

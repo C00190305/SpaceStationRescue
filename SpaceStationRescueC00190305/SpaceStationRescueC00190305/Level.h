@@ -8,6 +8,7 @@
 #include "SFMLOrthogonalLayer.hpp"
 #include "NPCManager.h"
 #include "player.h"
+#include "ShieldPickup.h"
 #include <vector>
 #include <iostream>
 
@@ -30,6 +31,7 @@ private:
 	MapLayer* layerThree;
 	std::vector<tmx::Object> m_objects;
 	std::vector<MapLayer*> m_drawableLayers;
+	ShieldPickup* m_shieldPickup;
 	
 	void resolveCollisions(Player* p, ProjectileManager projectileManager, NPCManager npcManager);
 };

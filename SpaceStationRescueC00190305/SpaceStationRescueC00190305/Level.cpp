@@ -23,6 +23,9 @@ Level::Level(std::string path) : m_path(path)
 
 	m_drawableLayers.push_back(layerOne);
 	m_drawableLayers.push_back(layerTwo);
+
+	//Place shield pickup
+	m_shieldPickup = new ShieldPickup(sf::Vector2f(thor::random(100.0f, 2880.0f), thor::random(100.0f, 2880.0f)));
 	
 	const auto& layers = m_map->getLayers();
 	std::cout << "Map has " << layers.size() << " layers" << std::endl;
@@ -61,6 +64,7 @@ void Level::draw(sf::RenderWindow &window)
 	window.draw(m_backgroundSprite);
 	window.draw(*layerOne);
 	window.draw(*layerTwo);
+	m_shieldPickup->draw(window);
 }
 
 void Level::resolveCollisions(Player* p, ProjectileManager projectileManager, NPCManager npcManager)
@@ -79,6 +83,19 @@ void Level::resolveCollisions(Player* p, ProjectileManager projectileManager, NP
 		{
 			//std::cout << "Collision detected player" << std::endl;
 			p->collisionDetected();
+		}
+
+		//Place the shield pickup in a new area if it is not inside the bounds of the level
+		if (m_shieldPickup->getSprite().getGlobalBounds().intersects(*collisionRect))
+		{
+			m_shieldPickup->replace(sf::Vector2f(thor::random(100.0f, 2880.0f), thor::random(100.0f, 2880.0)));
+		}
+
+		//If a player collides with the shield pickup, add to their health and place the pickup somewhere new.
+		if (m_shieldPickup->getSprite().getGlobalBounds().intersects(p->getSprite().getGlobalBounds()))
+		{
+			p->addHealth(20);
+			m_shieldPickup->replace(sf::Vector2f(thor::random(100.0f, 2880.0f), thor::random(100.0f, 2880.0)));
 		}
 
 		const int POOLSIZE = 20;

@@ -22,7 +22,7 @@ AlienNest::AlienNest(sf::Vector2f position) : m_pos(position)
 }
 //Update method
 //@param p: player object
-void AlienNest::update(Player* p, std::vector<Worker*> workerVector)
+void AlienNest::update(Player* p, std::vector<Worker*>* workerVector)
 {
 	if (m_health <= 0)
 	{
@@ -59,17 +59,18 @@ void AlienNest::draw(sf::RenderWindow& window)
 
 //Function that resolves collisions between workers and sweepers
 //@param workerVector: a std::vector of pointers to worker objects.
-void AlienNest::updateSweepers(std::vector<Worker*> workerVector)
+void AlienNest::updateSweepers(std::vector<Worker*>* workerVector)
 {
-	for (int i = 0; i < workerVector.size(); i++)
+	for (int i = 0; i < workerVector->size(); i++)
 	{
 		for (int j = 0; j < m_sweepers.size(); j++)
 		{
-			m_sweepers.at(j)->update(workerVector.at(i));
-			if (workerVector.at(i)->getSprite().getGlobalBounds().intersects(m_sweepers.at(j)->getSprite().getGlobalBounds()))
+			m_sweepers.at(j)->update(workerVector->at(i));
+			if (workerVector->at(i)->getSprite().getGlobalBounds().intersects(m_sweepers.at(j)->getSprite().getGlobalBounds()))
 			{
-				workerVector.erase(workerVector.begin() + i);
 				m_sweepers.at(j)->capturedWorker();
+				workerVector->erase(workerVector->begin() + i);
+				break;
 			}
 		}
 	}

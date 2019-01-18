@@ -146,6 +146,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="ShieldPickup.cpp" />
     <ClCompile Include="Sweeper.cpp" />
     <ClCompile Include="alienNest.cpp" />
     <ClCompile Include="AnimatedSprite.cpp" />
@@ -162,6 +163,7 @@
     <ClCompile Include="worker.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="ShieldPickup.h" />
     <ClInclude Include="Sweeper.h" />
     <ClInclude Include="alienNest.h" />
     <ClInclude Include="AnimatedSprite.hpp" />

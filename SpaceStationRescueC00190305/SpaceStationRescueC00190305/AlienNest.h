@@ -16,7 +16,7 @@ public:
 	AlienNest();
 	AlienNest(sf::Vector2f position);
 
-	void update(Player* p, std::vector<Worker*> workerVector);
+	void update(Player* p, std::vector<Worker*>* workerVector);
 	void draw(sf::RenderWindow &window);
 	bool isAlive();
 	NestMissile* getMissile();
@@ -34,7 +34,7 @@ private:
 	sf::CircleShape m_detectionRadius; //circle for detecting the player
 	sf::CircleShape m_collisionRadius; //circle for colliding with player projectiles
 	void resolveCollisions(Player *p);
-	void updateSweepers(std::vector<Worker*> workerVector);
+	void updateSweepers(std::vector<Worker*>* workerVector);
 	void fireProjectile();
 	void spawnSweeper();
 
@@ -46,7 +46,7 @@ private:
 	sf::Time m_spawnTimer;
 	int m_spawnDelay = 4000; //can only spawn one sweeper every 4 seconds, up to the maximum
 
-	const int MAX_SWEEPERS = 2; //maximum number of predators that can be spawned 
+	const int MAX_SWEEPERS = 1; //maximum number of predators that can be spawned - 1
 	int m_health = 4; //number of hits the nest can take before being destroyed
 };
 

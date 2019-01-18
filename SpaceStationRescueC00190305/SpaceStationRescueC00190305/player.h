@@ -23,6 +23,7 @@ public:
 	ProjectileManager getProjectileManager();
 	int getHealth();
 	void reduceHealth(int amount);
+	void addHealth(int amount);
 
 private:
 	sf::Sprite m_sprite;

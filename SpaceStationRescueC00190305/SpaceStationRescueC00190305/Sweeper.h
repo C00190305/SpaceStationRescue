@@ -18,6 +18,7 @@ public:
 	void draw(sf::RenderWindow &window);
 	int getWorkersCaptured();
 	void capturedWorker();
+	void setCapturedWorkers(int val);
 	void wallCollisionDetected();
 
 	sf::Sprite getSprite();
@@ -38,6 +39,9 @@ private:
 	float m_rotationAngle;
 
 	bool m_seeking;
+
+	sf::Font m_font; 
+	sf::Text m_text; //Used as a UI element to display how many workers the sweeper has captured
 
 	//returns the vector for seek behavior.
 	sf::Vector2f seek(sf::Vector2f targetPosition);
